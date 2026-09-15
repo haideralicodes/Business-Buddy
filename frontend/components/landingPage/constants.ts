@@ -1,11 +1,11 @@
 export const SIGNUP_HREF = "/signup"
+export const LOGIN_HREF = "/login"
 
 export const NAV_LINKS = [
-  { label: "Home", href: "#hero" },
   { label: "Social", href: "#benefit" },
   { label: "Web Gen", href: "#genWeb" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Info", href: "#call" },
+  { label: "Reviews", href: "#testimonials" },
 ] as const
 
 export const LANDING_IMAGES = {
@@ -23,6 +23,8 @@ export const WEB_EXAMPLE_IMAGES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(
 export type Plan = {
   name: string
   price: string
+  tagline: string
+  featured?: boolean
   features: string[]
 }
 
@@ -30,6 +32,7 @@ export const PLANS: Plan[] = [
   {
     name: "Starter",
     price: "$9.99",
+    tagline: "Get your first site and feed running.",
     features: [
       "Customizable website templates",
       "Basic social media scheduling",
@@ -41,6 +44,8 @@ export const PLANS: Plan[] = [
   {
     name: "Pro",
     price: "$29.99",
+    tagline: "For businesses posting every day.",
+    featured: true,
     features: [
       "All features in the Starter Plan",
       "Advanced website customization",
@@ -54,6 +59,7 @@ export const PLANS: Plan[] = [
   {
     name: "Business",
     price: "$49.99",
+    tagline: "Multiple brands, one dashboard.",
     features: [
       "Customizable website templates",
       "Basic social media scheduling",
@@ -139,29 +145,77 @@ export const TESTIMONIAL_COLUMNS = [
   TESTIMONIALS.slice(6, 9),
 ]
 
+// Invented product-UI fragments that float around the hero image.
+export const HERO_CARDS = {
+  post: {
+    label: "Scheduled",
+    title: "Instagram · Tomorrow 9:00",
+    meta: "Caption generated · 3 hashtags",
+  },
+  site: {
+    label: "Website live",
+    title: "bakery-on-main.com",
+    meta: "Built in 2 min 14 s",
+  },
+} as const
+
+export const HERO_AVATARS = [
+  "/landing/avatar1.png",
+  "/landing/avatar2.png",
+  "/landing/avatar3.png",
+  "/landing/avatar4.png",
+]
+
 export const COPY = {
-  nav: { cta: "Get Started" },
-  hero: { line1: "grow", line2: "your", line3: "Business" },
+  nav: { login: "Log in", cta: "Get started" },
+  hero: {
+    eyebrow: "AI for small business",
+    line1: "grow",
+    line2: "your",
+    line3: "Business",
+    sub: "One place to build your website, schedule your social posts, and keep customers coming back. No agency, no templates that look like everyone else's.",
+    primaryCta: "Start for free",
+    secondaryCta: "See pricing",
+    proof: "Join the small businesses already online with Buddy",
+  },
   benefit: {
+    eyebrow: "Social scheduling",
     line1a: "Seamless",
     line1b: "Scheduling",
     line2a: "On your",
     line2b: "social media",
+    sub: "Plan a month of posts in an afternoon. Buddy writes the captions, picks the times, and publishes while you run the shop.",
   },
-  genWeb: { line1: "Website Generation", line2a: "in just", line2b: "few clicks" },
+  genWeb: {
+    eyebrow: "Website generation",
+    line1: "Website Generation",
+    line2a: "in just",
+    line2b: "few clicks",
+    sub: "Answer a few questions about your business and get a finished, hosted site. Edit anything in plain language.",
+  },
   pricing: {
-    line1a: "upgrade for",
+    eyebrow: "Pricing",
+    line1a: "Upgrade for",
     line1b: "customizations",
     line2a: "seamless",
     line2b: "scheduling",
+    sub: "Start free. Upgrade when the posts start paying for themselves.",
     cta: "Sign up now",
     period: "/month",
+    featuredBadge: "Most popular",
   },
   call: {
-    heading: "Sign up for free!",
+    eyebrow: "Ready when you are",
+    line1: "Sign up for",
+    line2: "free!",
     body: "Your business now online! You focus on growing your business, while we work behind the scenes.",
     cta: "Get Started For Free",
   },
-  testimonials: { heading: "What our users say?!" },
-  footer: { company: "Business Buddy" },
+  testimonials: {
+    eyebrow: "Wall of love",
+    line1: "What our",
+    line2: "users",
+    line3: "say?!",
+  },
+  footer: { company: "Business Buddy", tagline: "Your AI business buddy." },
 } as const

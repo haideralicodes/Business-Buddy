@@ -1,39 +1,56 @@
 import Image from "next/image"
 import { Card, CardContent } from "@/packages/ui/card"
 import { COPY, TESTIMONIAL_COLUMNS } from "./constants"
+import { Prominent, SectionHeading } from "./SectionHeading"
 
 export default function Testimonials() {
   return (
-    <section className="relative mx-auto mb-24 h-[1000px] w-full max-w-[1200px] overflow-hidden p-5">
-      <div className="mb-[90px] mt-[100px] text-center">
-        <h1 className="font-anzo text-[clamp(2.5rem,7vw,6rem)] leading-none">{COPY.testimonials.heading}</h1>
-      </div>
-      <div className="pointer-events-none absolute left-0 top-0 z-2 h-20 w-full bg-linear-to-b from-background to-transparent" />
-      <div className="flex justify-around gap-12">
-        {TESTIMONIAL_COLUMNS.map((column, i) => (
-          <div key={i} className="flex flex-1 flex-col items-center overflow-hidden">
-            <div className="flex animate-marquee-y flex-col gap-5">
-              {column.concat(column).map((t, index) => (
-                <Card key={`${t.username}-${index}`} variant="ghost" className="w-[300px] text-center">
-                  <CardContent className="flex flex-col items-center">
-                    <Image
-                      src={t.imageSrc}
-                      alt={t.name}
-                      width={80}
-                      height={80}
-                      className="mb-4 size-20 rounded-full"
-                    />
-                    <p className="mb-2 italic">&ldquo;{t.text}&rdquo;</p>
-                    <h3 className="mb-1 text-lg font-bold">{t.name}</h3>
-                    <p className="text-sm text-muted-foreground">{t.username}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+    <section id="testimonials" className="scroll-mt-24 px-6 py-28 md:py-36">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          eyebrow={COPY.testimonials.eyebrow}
+          title={
+            <>
+              {COPY.testimonials.line1} <Prominent>{COPY.testimonials.line2}</Prominent> {COPY.testimonials.line3}
+            </>
+          }
+        />
+
+        <div className="relative mt-16 h-[720px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
+          <div className="grid h-full gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {TESTIMONIAL_COLUMNS.map((column, i) => (
+              <div
+                key={i}
+                className={i === 2 ? "hidden overflow-hidden lg:block" : i === 1 ? "hidden overflow-hidden sm:block" : "overflow-hidden"}
+              >
+                <div
+                  className="flex animate-marquee-y flex-col gap-5 hover:[animation-play-state:paused]"
+                  style={{ animationDelay: `${i * -7}s` }}
+                >
+                  {column.concat(column).map((t, index) => (
+                    <Card
+                      key={`${t.username}-${index}`}
+                      variant="flat"
+                      className="gap-0 rounded-2xl border border-foreground/10 py-0 shadow-[0_16px_40px_-28px_rgba(0,0,0,0.4)]"
+                    >
+                      <CardContent className="flex flex-col gap-5 p-6">
+                        <p className="text-[15px] leading-relaxed">&ldquo;{t.text}&rdquo;</p>
+                        <div className="flex items-center gap-3">
+                          <Image src={t.imageSrc} alt="" width={40} height={40} className="size-10 rounded-full" />
+                          <div>
+                            <p className="text-sm font-semibold leading-tight">{t.name}</p>
+                            <p className="text-xs text-muted-foreground">{t.username}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-      <div className="pointer-events-none absolute bottom-0 left-0 z-2 h-20 w-full bg-linear-to-t from-background to-transparent" />
     </section>
   )
 }

@@ -1,60 +1,80 @@
 import Link from "next/link"
-import { Check } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/packages/ui/card"
+import { ArrowRight, Check } from "lucide-react"
+import { Badge } from "@/packages/ui/badge"
+import { Card, CardContent, CardFooter, CardHeader } from "@/packages/ui/card"
 import { buttonVariants } from "@/packages/ui/button"
 import { cn } from "@/lib/utils"
 import { COPY, PLANS, SIGNUP_HREF } from "./constants"
+import { Mark, Prominent, SectionHeading } from "./SectionHeading"
 
 export default function Pricing() {
   return (
-    <section
-      id="pricing"
-      className="flex w-full flex-col items-center bg-surface px-6 pt-20 text-surface-foreground"
-    >
-      <div className="text-center">
-        <p className="text-[clamp(2.5rem,7vw,5.25rem)] leading-[0.95]">
-          <span className="font-anzo font-semibold">{COPY.pricing.line1a} </span>
-          <span className="font-blinds italic">{COPY.pricing.line1b}</span>,
-        </p>
-        <p className="text-[clamp(2.5rem,7vw,5.25rem)] leading-[1.2]">
-          <span className="font-blinds">{COPY.pricing.line2a}</span>{" "}
-          <span className="bg-primary px-[10px] pr-[15px] font-anzo font-semibold italic text-primary-foreground">
-            {COPY.pricing.line2b}
-          </span>
-        </p>
-      </div>
+    <section id="pricing" className="scroll-mt-24 bg-surface px-6 py-28 text-surface-foreground md:py-36">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          eyebrow={COPY.pricing.eyebrow}
+          title={
+            <>
+              {COPY.pricing.line1a} <Prominent>{COPY.pricing.line1b}</Prominent>,
+              <br />
+              {COPY.pricing.line2a} <Mark face="anzo">{COPY.pricing.line2b}</Mark>
+            </>
+          }
+          sub={COPY.pricing.sub}
+        />
 
-      <div className="mt-20 flex w-full max-w-[1300px] flex-wrap items-stretch justify-center gap-10">
-        {PLANS.map((plan) => (
-          <Card key={plan.name} variant="flat" className="min-h-[600px] w-[390px] rounded-md px-5 py-8">
-            <CardHeader className="px-0">
-              <CardTitle className="text-[1.6rem] font-medium opacity-80">{plan.name}</CardTitle>
-              <p className="mt-4 text-[4rem] font-bold leading-none">
-                {plan.price}
-                <span className="text-base font-bold opacity-90">{COPY.pricing.period}</span>
-              </p>
-            </CardHeader>
-            <CardContent className="flex flex-col px-0">
-              <Link
-                href={SIGNUP_HREF}
-                className={cn(
-                  buttonVariants({ variant: "brand", size: "2xl" }),
-                  "mt-10 w-[270px] font-anzo uppercase duration-500"
-                )}
-              >
-                {COPY.pricing.cta}
-              </Link>
-              <ul className="mt-8 space-y-1">
+        <div className="mt-16 grid gap-5 md:grid-cols-3 md:items-start">
+          {PLANS.map((plan) => (
+            <Card
+              key={plan.name}
+              variant="flat"
+              className={cn(
+                "relative gap-0 rounded-3xl border border-foreground/10 py-0 transition-transform duration-300 hover:-translate-y-1",
+                plan.featured &&
+                  "border-primary/60 shadow-[0_30px_60px_-30px_var(--primary)] ring-1 ring-primary/40 md:-mt-4"
+              )}
+            >
+              {plan.featured ? (
+                <Badge className="absolute right-5 top-5 h-6 px-2.5 font-mono text-[10px] uppercase tracking-[0.12em]">
+                  {COPY.pricing.featuredBadge}
+                </Badge>
+              ) : null}
+
+              <CardHeader className="gap-1 px-7 pt-7">
+                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{plan.name}</p>
+                <p className="mt-3 flex items-baseline gap-1">
+                  <span className="text-5xl font-semibold tracking-[-0.03em]">{plan.price}</span>
+                  <span className="text-sm text-muted-foreground">{COPY.pricing.period}</span>
+                </p>
+                <p className="text-sm text-muted-foreground">{plan.tagline}</p>
+              </CardHeader>
+
+              <CardContent className="px-7 pt-6">
+                <Link
+                  href={SIGNUP_HREF}
+                  className={cn(
+                    buttonVariants({ variant: plan.featured ? "brand" : "pill-outline", size: "xl" }),
+                    "w-full"
+                  )}
+                >
+                  {COPY.pricing.cta}
+                  <ArrowRight data-icon="inline-end" />
+                </Link>
+              </CardContent>
+
+              <CardFooter className="mt-6 flex-col items-start gap-3 border-t border-foreground/10 bg-transparent px-7 py-6">
                 {plan.features.map((feature, i) => (
-                  <li key={`${feature}-${i}`} className="flex items-center text-lg leading-[30px]">
-                    <Check className="mr-4 size-4 shrink-0" strokeWidth={3} />
+                  <p key={`${feature}-${i}`} className="flex items-start gap-3 text-sm leading-snug">
+                    <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+                      <Check className="size-2.5" strokeWidth={3} />
+                    </span>
                     {feature}
-                  </li>
+                  </p>
                 ))}
-              </ul>
-            </CardContent>
-          </Card>
-        ))}
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   )

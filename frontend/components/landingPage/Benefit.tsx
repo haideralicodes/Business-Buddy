@@ -1,30 +1,33 @@
 import Image from "next/image"
 import { COPY, LANDING_IMAGES } from "./constants"
+import { Mark, SectionHeading } from "./SectionHeading"
 
 export default function Benefit() {
   return (
-    <section
-      id="benefit"
-      className="flex w-full flex-col items-center justify-center bg-surface px-6 pb-40 pt-20 text-surface-foreground"
-    >
-      <div className="flex flex-col items-center justify-center text-center">
-        <p className="font-blinds text-[clamp(3rem,7vw,100px)] leading-none">
-          {COPY.benefit.line1a} <span className="font-anzo uppercase">{COPY.benefit.line1b}</span>
-        </p>
-        <p className="mb-4 text-[clamp(3rem,7vw,100px)] leading-none">
-          <span className="font-anzo">{COPY.benefit.line2a} </span>
-          <span className="bg-primary px-[10px] pr-[15px] font-blinds italic uppercase text-primary-foreground">
-            {COPY.benefit.line2b}
-          </span>
-        </p>
+    <section id="benefit" className="scroll-mt-24 bg-surface px-6 py-28 text-surface-foreground md:py-36">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          eyebrow={COPY.benefit.eyebrow}
+          title={
+            <>
+              {COPY.benefit.line1a} {COPY.benefit.line1b}
+              <br />
+              {COPY.benefit.line2a} <Mark>{COPY.benefit.line2b}</Mark>
+            </>
+          }
+          sub={COPY.benefit.sub}
+        />
+
+        <div className="mt-16 overflow-hidden rounded-[28px] border border-foreground/10 bg-card shadow-[0_40px_80px_-50px_rgba(0,0,0,0.5)]">
+          <Image
+            src={LANDING_IMAGES.schedulePost}
+            alt="Scheduling a social media post in Business Buddy"
+            width={1400}
+            height={800}
+            className="h-auto w-full"
+          />
+        </div>
       </div>
-      <Image
-        src={LANDING_IMAGES.schedulePost}
-        alt="Schedule a social media post"
-        width={1100}
-        height={620}
-        className="h-auto max-h-[620px] w-auto rounded-[20px]"
-      />
     </section>
   )
 }

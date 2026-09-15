@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Primary typeface for the whole app. Display faces below are for single emphasized words only.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Display faces used by the landing page headlines.
+// Display faces: used to make one word in a headline prominent, never for running text.
 const anzo = localFont({
   src: "./fonts/anzo.woff2",
   variable: "--font-anzo",
@@ -38,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${anzo.variable} ${blinds.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} ${anzo.variable} ${blinds.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

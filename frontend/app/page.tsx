@@ -18,8 +18,8 @@ export default function Page() {
         <Benefit />
         <GenerateWebsite />
         <Pricing />
-        <CallAction />
         <Testimonials />
+        <CallAction />
       </main>
       <Footer />
     </>

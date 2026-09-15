@@ -1,17 +1,23 @@
 import ScrollWeb from "./ScrollWeb"
 import { COPY } from "./constants"
+import { Mark, SectionHeading } from "./SectionHeading"
 
 export default function GenerateWebsite() {
   return (
-    <section
-      id="genWeb"
-      className="flex w-full flex-col items-center justify-center bg-surface px-6 pb-20 text-center text-surface-foreground"
-    >
-      <h1 className="font-anzo text-[clamp(3rem,6.5vw,90px)] uppercase leading-tight">{COPY.genWeb.line1}</h1>
-      <h1 className="font-blinds text-[clamp(3rem,7vw,100px)] leading-tight">
-        {COPY.genWeb.line2a}{" "}
-        <span className="bg-primary px-[10px] pr-[22px] italic uppercase text-primary-foreground">{COPY.genWeb.line2b}</span>
-      </h1>
+    <section id="genWeb" className="scroll-mt-24 px-6 py-28 md:py-36">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          eyebrow={COPY.genWeb.eyebrow}
+          title={
+            <>
+              {COPY.genWeb.line1}
+              <br />
+              {COPY.genWeb.line2a} <Mark>{COPY.genWeb.line2b}</Mark>
+            </>
+          }
+          sub={COPY.genWeb.sub}
+        />
+      </div>
       <ScrollWeb />
     </section>
   )

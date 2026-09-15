@@ -18,11 +18,11 @@ const buttonVariants = cva(
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
         // Landing page variants
-        pill: "rounded-full bg-inverse text-inverse-foreground hover:border-inverse hover:bg-transparent hover:text-foreground",
+        pill: "rounded-full bg-inverse text-inverse-foreground shadow-sm hover:bg-inverse/85",
         "pill-outline":
-          "rounded-full border-inverse bg-transparent text-foreground hover:bg-inverse hover:text-inverse-foreground",
+          "rounded-full border-foreground/15 bg-background/60 text-foreground backdrop-blur hover:border-foreground/30 hover:bg-background",
         brand:
-          "rounded-full bg-primary text-primary-foreground hover:bg-inverse hover:text-inverse-foreground",
+          "rounded-full bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_var(--primary)] hover:bg-primary/90 hover:shadow-[0_12px_32px_-8px_var(--primary)]",
         cta: "rounded-full bg-inverse text-inverse-foreground hover:bg-primary hover:text-primary-foreground",
       },
       size: {
