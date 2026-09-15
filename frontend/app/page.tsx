@@ -1,7 +1,27 @@
-import React from 'react'
+import {
+  Benefit,
+  CallAction,
+  Footer,
+  GenerateWebsite,
+  HeroSection,
+  Navbar,
+  Pricing,
+  Testimonials,
+} from "@/components/landingPage"
 
 export default function Page() {
   return (
-    <div>Landing Page</div>
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <Benefit />
+        <GenerateWebsite />
+        <Pricing />
+        <CallAction />
+        <Testimonials />
+      </main>
+      <Footer />
+    </>
   )
 }
