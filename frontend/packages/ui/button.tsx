@@ -17,6 +17,13 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        // Landing page variants
+        pill: "rounded-full bg-inverse text-inverse-foreground shadow-sm hover:bg-inverse/85",
+        "pill-outline":
+          "rounded-full border-foreground/15 bg-background/60 text-foreground backdrop-blur hover:border-foreground/30 hover:bg-background",
+        brand:
+          "rounded-full bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_var(--primary)] hover:bg-primary/90 hover:shadow-[0_12px_32px_-8px_var(--primary)]",
+        cta: "rounded-full bg-inverse text-inverse-foreground hover:bg-primary hover:text-primary-foreground",
       },
       size: {
         default:
@@ -30,6 +37,8 @@ const buttonVariants = cva(
         "icon-sm":
           "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
         "icon-lg": "size-9",
+        xl: "h-11 gap-2 px-6 text-base",
+        "2xl": "h-12 gap-2 px-8 text-base font-semibold",
       },
     },
     defaultVariants: {
