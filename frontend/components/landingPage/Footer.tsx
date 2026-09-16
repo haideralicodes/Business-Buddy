@@ -1,6 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
-import { COPY, LANDING_IMAGES, LOGIN_HREF, NAV_LINKS, SIGNUP_HREF } from "./constants"
+import Logo from "@/components/Logo"
+import { COPY, LOGIN_HREF, NAV_LINKS, SIGNUP_HREF } from "./constants"
 
 export default function Footer() {
   return (
@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-10 md:flex-row md:items-start md:justify-between">
         <div className="flex flex-col gap-3">
           <Link href="/" className="flex items-center gap-2.5">
-            <Image src={LANDING_IMAGES.logo} alt="" width={28} height={28} className="size-7" />
+            <Logo className="size-7" />
             <span className="text-sm font-semibold tracking-tight">{COPY.footer.company}</span>
           </Link>
           <p className="text-sm text-muted-foreground">{COPY.footer.tagline}</p>

@@ -1,8 +1,8 @@
-import Image from "next/image"
 import Link from "next/link"
 import { buttonVariants } from "@/packages/ui/button"
 import { cn } from "@/lib/utils"
-import { COPY, LANDING_IMAGES, LOGIN_HREF, NAV_LINKS, SIGNUP_HREF } from "./constants"
+import Logo from "@/components/Logo"
+import { COPY, LOGIN_HREF, NAV_LINKS, SIGNUP_HREF } from "./constants"
 import ThemeToggle from "./ThemeToggle"
 
 export default function Navbar() {
@@ -10,7 +10,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 px-4 pt-4">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between rounded-full border border-foreground/10 bg-background/70 pl-4 pr-2 shadow-[0_1px_0_0_var(--background),0_8px_30px_-12px_rgba(0,0,0,0.25)] backdrop-blur-xl">
         <Link href="/" className="flex items-center gap-2.5">
-          <Image src={LANDING_IMAGES.logo} alt="" width={28} height={28} priority className="size-7" />
+          <Logo className="size-7" />
           <span className="text-sm font-semibold tracking-tight">{COPY.footer.company}</span>
         </Link>
 

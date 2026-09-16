@@ -9,7 +9,6 @@ export const NAV_LINKS = [
 ] as const
 
 export const LANDING_IMAGES = {
-  logo: "/landing/logo.png",
   hero: "/landing/work.webp",
   schedulePost: "/landing/schedulePost.png",
   star: "/landing/star.png",
