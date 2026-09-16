@@ -114,7 +114,7 @@ function Stage() {
   return (
     <div className="relative hidden border-l border-line p-6 lg:flex">
       <div
-        className="relative flex flex-1 flex-col justify-end overflow-hidden rounded-xl p-6"
+        className="relative flex flex-1 flex-col justify-end overflow-hidden rounded-xl p-6 border border-red-500"
         style={{
           background:
             "linear-gradient(160deg, color-mix(in oklch, var(--primary) 34%, var(--card)) 0%, color-mix(in oklch, var(--primary) 10%, var(--card)) 55%, color-mix(in oklch, oklch(0.8 0.1 60) 30%, var(--card)) 100%)",
