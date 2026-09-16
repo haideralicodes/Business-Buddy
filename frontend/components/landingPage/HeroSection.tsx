@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, CreditCard } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { buttonVariants } from "@/packages/ui/button"
 import { cn } from "@/lib/utils"
 import HeroProductPanel from "./HeroProductPanel"
@@ -45,14 +45,6 @@ export default function HeroSection() {
               {COPY.hero.secondaryCta}
             </a>
           </div>
-
-          <p
-            className="animate-fade-up mt-3.5 flex items-center gap-1.5 text-[13px] text-foreground/70"
-            style={{ animationDelay: "320ms" }}
-          >
-            <CreditCard className="size-3.5" />
-            {COPY.hero.microcopy}
-          </p>
         </div>
 
         <div className="animate-fade-up mt-16 border-t border-line" style={{ animationDelay: "280ms" }}>
