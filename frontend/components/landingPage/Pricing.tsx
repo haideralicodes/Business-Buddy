@@ -12,7 +12,7 @@ export default function Pricing() {
   return (
     <section id="pricing" className="scroll-mt-[72px]">
       <Hatch />
-      <Rails className="px-6 py-20 md:px-16 md:py-28">
+      <Rails className="px-6 py-20 md:px-10 md:py-28 lg:px-16">
         <SectionHeading
           eyebrow={COPY.pricing.eyebrow}
           title={
@@ -32,7 +32,7 @@ export default function Pricing() {
               variant="flat"
               className={cn(
                 "relative gap-0 rounded-xl border border-line py-0",
-                plan.featured && "border-primary shadow-[0_20px_60px_-24px_var(--primary)] md:-mt-3"
+                plan.featured && "border-primary md:-mt-3"
               )}
             >
               {plan.featured ? (
@@ -44,7 +44,7 @@ export default function Pricing() {
               <CardHeader className="gap-1 px-6 pt-6">
                 <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted-foreground">{plan.name}</p>
                 <p className="mt-3 flex items-baseline gap-1">
-                  <span className="text-[44px] font-semibold leading-none tracking-[-0.03em]">{plan.price}</span>
+                  <span className="text-[40px] font-semibold leading-none tracking-[-0.03em] lg:text-[44px]">{plan.price}</span>
                   <span className="text-sm text-muted-foreground">{COPY.pricing.period}</span>
                 </p>
                 <p className="text-sm text-muted-foreground">{plan.tagline}</p>

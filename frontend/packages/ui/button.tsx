@@ -22,7 +22,7 @@ const buttonVariants = cva(
         "pill-outline":
           "rounded-full border-foreground/15 bg-background/60 text-foreground backdrop-blur hover:border-foreground/30 hover:bg-background",
         brand:
-          "rounded-full bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_var(--primary)] hover:bg-primary/90 hover:shadow-[0_12px_32px_-8px_var(--primary)]",
+          "rounded-full bg-primary text-primary-foreground hover:bg-primary/90",
         cta: "rounded-full bg-inverse text-inverse-foreground hover:bg-primary hover:text-primary-foreground",
       },
       size: {

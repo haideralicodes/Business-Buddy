@@ -15,7 +15,7 @@ export default function Navbar() {
           <span className="text-[15px] font-semibold tracking-tight">{COPY.footer.company}</span>
         </Link>
 
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}

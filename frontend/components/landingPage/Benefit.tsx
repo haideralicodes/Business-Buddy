@@ -21,10 +21,10 @@ const STAGES = [
   "linear-gradient(180deg, color-mix(in oklch, oklch(0.8 0.1 60) 34%, var(--card)) 0%, color-mix(in oklch, oklch(0.7 0.12 250) 26%, var(--card)) 100%)",
 ]
 
-function Stage({ index, children }: { index: number; children: ReactNode }) {
+function Stage({ index, className, children }: { index: number; className?: string; children: ReactNode }) {
   return (
     <div
-      className="relative flex aspect-[3/4] w-full items-center justify-center overflow-hidden rounded-xl p-6"
+      className={cn("relative flex aspect-[3/4] w-full min-w-0 items-center justify-center overflow-hidden rounded-xl p-5 sm:p-6", className)}
       style={{ background: STAGES[index] }}
     >
       {children}
@@ -33,7 +33,7 @@ function Stage({ index, children }: { index: number; children: ReactNode }) {
 }
 
 // Hover never moves the card or the panel; it animates the product inside (see each fragment).
-const panel = "w-full rounded-xl border border-black/5 bg-card text-card-foreground shadow-[0_20px_50px_-20px_rgba(0,0,0,0.25)]"
+const panel = "w-full min-w-0 rounded-xl border border-black/5 bg-card text-card-foreground shadow-[0_20px_50px_-20px_rgba(0,0,0,0.25)]"
 
 // Card 1: prompt in, three post directions out, one approved.
 function IdeasFragment() {
@@ -200,7 +200,7 @@ export default function Benefit() {
   return (
     <section id="benefit" className="scroll-mt-[72px]">
       <Hatch />
-      <Rails className="px-6 py-20 md:px-16 md:py-28">
+      <Rails className="px-6 py-20 md:px-10 md:py-28 lg:px-16">
         <SectionHeading
           eyebrow={COPY.benefit.eyebrow}
           title={
@@ -212,12 +212,15 @@ export default function Benefit() {
           }
         />
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3 md:gap-5">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {COPY.benefit.cards.map((card, i) => {
             const Fragment = FRAGMENTS[i]
+            // Two columns on tablet leave the third card alone on its row, so it
+            // goes wide there and back to a portrait stage at three columns.
+            const last = i === FRAGMENTS.length - 1
             return (
-              <div key={card.title} className="group flex flex-col">
-                <Stage index={i}>
+              <div key={card.title} className={cn("group flex min-w-0 flex-col", last && "sm:col-span-2 lg:col-span-1")}>
+                <Stage index={i} className={last ? "sm:aspect-[16/9] lg:aspect-[3/4]" : undefined}>
                   <Fragment />
                 </Stage>
                 <h3 className="mt-6 text-lg font-medium tracking-[-0.01em]">{card.title}</h3>
