@@ -21,7 +21,7 @@ function getSnapshot(): Theme {
 // Server render and first client paint both use this; the real value
 // arrives once the store subscribes, which avoids a hydration mismatch.
 function getServerSnapshot(): Theme {
-  return "light"
+  return "dark"
 }
 
 function applyTheme(theme: Theme) {

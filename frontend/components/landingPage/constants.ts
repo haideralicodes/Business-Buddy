@@ -122,7 +122,6 @@ export const COPY = {
     sub: "Tell Business Buddy about your business once. It builds your site, writes your captions, and keeps your calendar full. You just run the business.",
     primaryCta: "Start for free",
     secondaryCta: "See pricing",
-    microcopy: "No credit card required",
   },
   benefit: {
     eyebrow: "Social media",

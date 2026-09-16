@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, CreditCard } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { AuthShell, Field } from "@/components/auth/AuthShell"
 import { Prominent } from "@/components/landingPage/SectionHeading"
 import { Button } from "@/packages/ui/button"
@@ -44,10 +44,6 @@ export default function Signup() {
           Create account
           <ArrowRight data-icon="inline-end" />
         </Button>
-        <p className="-mt-1 flex items-center justify-center gap-1.5 text-[13px] text-foreground/70">
-          <CreditCard className="size-3.5" />
-          No credit card required
-        </p>
       </form>
     </AuthShell>
   )

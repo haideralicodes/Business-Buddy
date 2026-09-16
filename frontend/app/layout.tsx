@@ -33,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} ${blinds.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} ${blinds.variable} h-full antialiased dark`}
       suppressHydrationWarning
     >
       <head>
