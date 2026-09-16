@@ -77,3 +77,72 @@ One entry per screenshot in `landing page examples/`. Use this to decide which r
 - **CTAs:** Small square-ish mono-caps buttons, one white, one dark.
 - **Below:** Centered statement text, a glossy 3D logo tile with a thin glowing vertical line connecting down to a bordered grid section ("■ WHAT WE DO") with two-tone text (white lead phrase, gray continuation).
 - **Take from it:** Technical, editorial AI aesthetic; connector lines and bordered grid sections.
+
+---
+
+# Light structured family
+
+Short summaries below. Measured typography, spacing, colors, and CSS recipes for each are in `light-structured-analysis.md` section 8.
+
+## 10 — Blockad VC (light framed grid, thin type, split hero)
+`10-blockad-light-framed-grid-thin-type-split.png`
+- **Structure:** White page with vertical rails, diagonal-hatched bands above and below the hero, corner tick marks at the hero box corners.
+- **Layout:** Split hero: left half white with text, right half light-gray panel containing a rounded, blurry blue-toned cinematic photo.
+- **Type:** Very thin, large sans headline across 3 lines, left-aligned. Breadcrumb eyebrow: blue dot + "#1 Global partner / WEALTH MANAGEMENT FIRM" (second part mono caps, gray). Gray body text.
+- **CTAs:** Black pill primary + light-gray pill secondary; black pill in nav. Logo is two thick vertical bars.
+- **Take from it:** Quiet luxury for finance/VC; grid framing plus thin type.
+
+## 11 — Cognivis (light hatched grid, cobalt dashboard)
+`11-cognivis-light-hatched-grid-cobalt-dashboard.png`
+- **Structure:** Vertical rails, hatched band under nav, `+` crosshairs at intersections.
+- **Type:** Mono uppercase eyebrow framed by corner brackets ("UNIFIED INTELLIGENCE LAYER"); big light-weight centered sans headline; gray 2-line sub.
+- **CTAs:** Square cobalt-blue "Book a demo" + light-gray "View pricing"; "No credit card required" with card icon below. Nav links use `+` instead of chevrons.
+- **Media:** Full-width saturated cobalt panel with pixel/dither squares, holding a detailed white analytics dashboard with KPI cards and a pipeline chart.
+- **Take from it:** Enterprise AI credibility; single cobalt accent used boldly.
+
+## 12 — Clonely (pixel landscape hero + dashboard)
+`12-clonely-pixel-landscape-hero-dashboard.png`
+- **Theme:** Full-bleed dithered/pixel-art snowy mountain landscape inside a rounded frame.
+- **Type:** Bold white tight sans headline, centered, with subtle shadow for legibility.
+- **CTAs:** Glossy blue pill + white pill, both with inner highlight/border. Nav: white "Docs" pill, blue "Sign Up" pill.
+- **Below:** "Trusted by 69,420+ users" beside a logo row, then a large Linear-style kanban app screenshot in a frosted window frame overlapping the landscape.
+- **Take from it:** Artful image background combined with real product UI.
+
+## 13 — Clonely (light painted landscape, left-aligned)
+`13-clonely-light-painted-landscape-left-aligned.png`
+- **Structure:** Hatched gutters on all sides framing the page; faint horizontal lines at the top.
+- **Theme:** Pale, washed-out watercolor/oil mountain landscape fading into off-white at the bottom.
+- **Type:** Huge black tight sans headline, bottom-left aligned; large gray sub.
+- **CTAs:** Small square blue button + plain text link. Blue gradient wordmark logo.
+- **Take from it:** Airy, calm AI product hero with the headline anchored low.
+
+## 14 — FigmaNutz (faded template wall, selection box)
+`14-figmanutz-faded-template-wall-selection-box.png`
+- **Theme:** White background covered with a very faded grid of website/template thumbnails.
+- **Type:** Centered large regular-weight sans headline wrapped in a Figma-style blue selection rectangle with a "768 x 120" dimension tag. Small pill badge with Figma logo above.
+- **CTAs:** Indigo-violet pill with shadow + white bordered pill (playful copy).
+- **Take from it:** Design-tool metaphors as decoration; the product's output as background texture.
+
+## 15 — Aceternity (yellow highlighter, phone split)
+`15-aceternity-yellow-highlighter-phone-split.png`
+- **Layout:** Light-gray inset panel inside white frame; text left, outlined line-art phone mockup right (bleeding off the bottom) with chat bubbles and a 2×2 photo grid.
+- **Type:** Very large bold tight sans, left-aligned, 4 lines. Key phrase has a yellow marker block behind it; last word and "20%" have hand-drawn yellow underlines.
+- **CTAs:** Small yellow rounded button with black text + plain text link.
+- **Take from it:** Highlighter emphasis for friendly consumer/productivity tone.
+
+## 16 — DevStudio (avatar stack, two-tone headline)
+`16-devstudio-avatar-stack-two-tone-headline.png`
+- **Theme:** Off-white inset panel inside white rounded frame.
+- **Type:** Overlapping circular team avatars above a huge bold centered headline: first part dark gray, second part indigo, with a small outlined lightning icon at the end.
+- **CTAs:** Single black rounded button with a subtle bottom shadow/edge (also in nav).
+- **Below:** "Trusted by famous brands" logo row, then a carousel of portfolio site screenshots.
+- **Take from it:** Agency/studio hero that leads with people and work.
+
+## 17 — Landing kit (dot grid, floating previews)
+`17-landing-kit-dot-grid-floating-previews.png`
+- **Theme:** Warm off-white paper with a faint dot grid.
+- **Nav:** Floating white pill capsule, round black logo, links, thin divider, Login, bordered "Get Started →" pill.
+- **Type:** Centered medium-weight dark sans headline, 2 lines; gray sub.
+- **Media:** Template preview cards (gradient stripes, dark card, image hero, lead-gen page) scattered around and bleeding off the viewport edges.
+- **CTA:** Single white pill with shadow and arrow.
+- **Take from it:** Minimal center with showcase cards at the periphery.

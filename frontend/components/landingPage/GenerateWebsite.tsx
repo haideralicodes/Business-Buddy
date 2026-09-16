@@ -1,24 +1,28 @@
 import ScrollWeb from "./ScrollWeb"
 import { COPY } from "./constants"
-import { Mark, SectionHeading } from "./SectionHeading"
+import { Prominent, SectionHeading } from "./SectionHeading"
+import { Hatch, Rails } from "./Structure"
 
 export default function GenerateWebsite() {
   return (
-    <section id="genWeb" className="scroll-mt-24 px-6 py-28 md:py-36">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          eyebrow={COPY.genWeb.eyebrow}
-          title={
-            <>
-              {COPY.genWeb.line1}
-              <br />
-              {COPY.genWeb.line2a} <Mark>{COPY.genWeb.line2b}</Mark>
-            </>
-          }
-          sub={COPY.genWeb.sub}
-        />
-      </div>
-      <ScrollWeb />
+    <section id="genWeb" className="scroll-mt-[72px]">
+      <Hatch />
+      <Rails className="overflow-hidden pb-16 pt-20 md:pb-20 md:pt-28">
+        <div className="px-6">
+          <SectionHeading
+            eyebrow={COPY.genWeb.eyebrow}
+            title={
+              <>
+                {COPY.genWeb.line1}
+                <br />
+                {COPY.genWeb.line2a} <Prominent className="text-primary">{COPY.genWeb.line2b}</Prominent>
+              </>
+            }
+            sub={COPY.genWeb.sub}
+          />
+        </div>
+        <ScrollWeb />
+      </Rails>
     </section>
   )
 }

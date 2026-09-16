@@ -14,13 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Display faces: used to make one word in a headline prominent, never for running text.
-const anzo = localFont({
-  src: "./fonts/anzo.woff2",
-  variable: "--font-anzo",
-  display: "swap",
-});
-
+// Display face: used to make one word in a headline prominent, never for running text.
 const blinds = localFont({
   src: "./fonts/BlindsAudience.otf",
   variable: "--font-blinds",
@@ -39,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} ${anzo.variable} ${blinds.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} ${blinds.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

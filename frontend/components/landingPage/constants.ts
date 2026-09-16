@@ -5,19 +5,7 @@ export const NAV_LINKS = [
   { label: "Social", href: "#benefit" },
   { label: "Web Gen", href: "#genWeb" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Reviews", href: "#testimonials" },
 ] as const
-
-export const LANDING_IMAGES = {
-  hero: "/landing/work.webp",
-  schedulePost: "/landing/schedulePost.png",
-  star: "/landing/star.png",
-  spring: "/landing/spring.png",
-} as const
-
-export const WEB_EXAMPLE_IMAGES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(
-  (n) => `/landing/web${n}.webp`
-)
 
 export type Plan = {
   name: string
@@ -35,9 +23,8 @@ export const PLANS: Plan[] = [
     features: [
       "Customizable website templates",
       "Basic social media scheduling",
-      "Email Support",
-      "1 GB Storage",
-      "Basic support",
+      "Email support",
+      "1 GB storage",
     ],
   },
   {
@@ -46,13 +33,12 @@ export const PLANS: Plan[] = [
     tagline: "For businesses posting every day.",
     featured: true,
     features: [
-      "All features in the Starter Plan",
+      "Everything in Starter",
       "Advanced website customization",
       "Unlimited social media scheduling",
+      "AI post & caption generation",
       "10 GB storage",
       "Priority support",
-      "Advanced support",
-      "Post and Caption Generation",
     ],
   },
   {
@@ -60,145 +46,117 @@ export const PLANS: Plan[] = [
     price: "$49.99",
     tagline: "Multiple brands, one dashboard.",
     features: [
-      "Customizable website templates",
-      "Basic social media scheduling",
-      "Email Support",
-      "1 GB Storage",
-      "Basic support",
-      "Customizable website templates",
-      "Basic social media scheduling",
-      "Email Support",
-      "1 GB Storage",
-      "Basic support",
+      "Everything in Pro",
+      "Up to 5 business profiles",
+      "Team seats (up to 3 people)",
+      "50 GB storage",
+      "Dedicated priority support",
+      "Early access to new features",
     ],
   },
 ]
 
-export type Testimonial = {
-  text: string
-  imageSrc: string
-  name: string
-  username: string
-}
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    text: "As a seasoned designer always on the lookout for innovative tools, Framer.com instantly grabbed my attention.",
-    imageSrc: "/landing/avatar1.png",
-    name: "Jamie Rivera",
-    username: "@jamietechguru00",
-  },
-  {
-    text: "Our team's productivity has skyrocketed since we started using this tool.",
-    imageSrc: "/landing/avatar2.png",
-    name: "Josh Smith",
-    username: "@jjsmith",
-  },
-  {
-    text: "This app has completely transformed how I manage my projects and deadlines.",
-    imageSrc: "/landing/avatar3.png",
-    name: "Morgan Lee",
-    username: "@morganleewhiz",
-  },
-  {
-    text: "I was amazed at how quickly we were able to integrate this app into our workflow.",
-    imageSrc: "/landing/avatar4.png",
-    name: "Casey Jordan",
-    username: "@caseyj",
-  },
-  {
-    text: "Planning and executing events has never been easier. This app helps me keep track of all the moving parts, ensuring nothing slips through the cracks.",
-    imageSrc: "/landing/avatar5.png",
-    name: "Taylor Kim",
-    username: "@taylorkimm",
-  },
-  {
-    text: "The customizability and integration capabilities of this app are top-notch.",
-    imageSrc: "/landing/avatar6.png",
-    name: "Riley Smith",
-    username: "@rileysmith1",
-  },
-  {
-    text: "Adopting this app for our team has streamlined our project management and improved communication across the board.",
-    imageSrc: "/landing/avatar7.png",
-    name: "Jordan Patels",
-    username: "@jpatelsdesign",
-  },
-  {
-    text: "With this app, we can easily assign tasks, track progress, and manage documents all in one place.",
-    imageSrc: "/landing/avatar8.png",
-    name: "Sam Dawson",
-    username: "@dawsontechtips",
-  },
-  {
-    text: "Its user-friendly interface and robust features support our diverse needs.",
-    imageSrc: "/landing/avatar9.png",
-    name: "Casey Harper",
-    username: "@casey09",
-  },
-]
-
-export const TESTIMONIAL_COLUMNS = [
-  TESTIMONIALS.slice(0, 3),
-  TESTIMONIALS.slice(3, 6),
-  TESTIMONIALS.slice(6, 9),
-]
-
-// Invented product-UI fragments that float around the hero image.
-export const HERO_CARDS = {
-  post: {
-    label: "Scheduled",
-    title: "Instagram · Tomorrow 9:00",
-    meta: "Caption generated · 3 hashtags",
-  },
-  site: {
-    label: "Website live",
-    title: "bakery-on-main.com",
-    meta: "Built in 2 min 14 s",
-  },
+// Invented content for the app window on the hero panel. Realistic numbers,
+// names and status chips are what make it read as a product, not a placeholder.
+export const HERO_APP = {
+  business: "Aurora Bakery",
+  nav: ["Overview", "Website", "Posts", "Calendar", "Inbox"],
+  stats: [
+    { label: "Site visits", value: "1,284", delta: "+18%" },
+    { label: "Posts scheduled", value: "12", delta: "this week" },
+    { label: "Captions drafted", value: "37", delta: "+9" },
+    { label: "Bookings", value: "23", delta: "+6%" },
+  ],
+  site: { url: "aurorabakery.com", status: "Live", updated: "Edited 2 min ago" },
+  posts: [
+    { day: "Mon", time: "9:00", channel: "IG", title: "Weekend sale recap", state: "Posted" },
+    { day: "Wed", time: "12:30", channel: "FB", title: "Meet the maker", state: "Scheduled" },
+    { day: "Fri", time: "17:00", channel: "IG", title: "New sourdough drop", state: "Draft" },
+  ],
 } as const
 
-export const HERO_AVATARS = [
-  "/landing/avatar1.png",
-  "/landing/avatar2.png",
-  "/landing/avatar3.png",
-  "/landing/avatar4.png",
-]
+// Invented content for the on-brand mockup replacing the old competitor screenshot.
+// poster/tag mimic what an AI post-graphic actually looks like (bold text on a
+// color field), not an empty swatch.
+export const COPILOT_IDEAS = [
+  { label: "Weekend sale", poster: "WEEKEND\nSALE", tag: "20% OFF", accent: "oklch(0.733 0.245 323)" },
+  { label: "New arrival", poster: "JUST\nDROPPED", tag: "NEW", accent: "oklch(0.72 0.14 70)" },
+  { label: "Behind the scenes", poster: "MEET THE\nMAKER", tag: "OUR STORY", accent: "oklch(0.55 0.09 150)" },
+] as const
+
+// Invented activity feed for the third social card: what happens after a post goes out.
+export const PUBLISH_TIMELINE = [
+  { icon: "post", label: "Post published", time: "9:00 AM" },
+  { icon: "reply", label: "3 replies drafted", time: "9:14 AM" },
+  {
+    icon: "report",
+    label: "Weekly report ready",
+    time: "Mon 8:00",
+    details: [
+      { k: "Reach", v: "+42%" },
+      { k: "Best post", v: "Sourdough drop" },
+      { k: "Next", v: "Assigned" },
+    ],
+  },
+] as const
+
+// Invented style directions for the on-brand template preview strip — each one
+// a tiny real site mockup (nav + headline + CTA) for a different invented
+// small business, not an abstract color swatch.
+export const TEMPLATE_STYLES = [
+  { name: "Orchid", business: "Aurora Bakery", headline: "Fresh bakes,", headlineAccent: "daily.", accent: "oklch(0.733 0.245 323)" },
+  { name: "Midnight", business: "Foundry Gym", headline: "Train with", headlineAccent: "intent.", accent: "oklch(0.35 0.05 260)" },
+  { name: "Sage", business: "Willow & Co.", headline: "Plants for", headlineAccent: "every room.", accent: "oklch(0.55 0.09 150)" },
+  { name: "Clay", business: "Terra Studio", headline: "Handmade,", headlineAccent: "not mass-made.", accent: "oklch(0.62 0.13 40)" },
+  { name: "Slate", business: "Modern Cuts", headline: "Look sharp,", headlineAccent: "book today.", accent: "oklch(0.45 0.02 260)" },
+  { name: "Amber", business: "Café Lumen", headline: "Slow mornings,", headlineAccent: "great coffee.", accent: "oklch(0.72 0.14 70)" },
+] as const
 
 export const COPY = {
   nav: { login: "Log in", cta: "Get started" },
   hero: {
-    eyebrow: "AI for small business",
-    line1: "grow",
-    line2: "your",
-    line3: "Business",
-    sub: "One place to build your website, schedule your social posts, and keep customers coming back. No agency, no templates that look like everyone else's.",
+    eyebrow: "Website + social, one login",
+    line1: "Your business online,",
+    line2a: "without the",
+    line2b: "busywork",
+    sub: "Tell Business Buddy about your business once. It builds your site, writes your captions, and keeps your calendar full. You just run the business.",
     primaryCta: "Start for free",
     secondaryCta: "See pricing",
-    proof: "Join the small businesses already online with Buddy",
+    microcopy: "No credit card required",
   },
   benefit: {
-    eyebrow: "Social scheduling",
-    line1a: "Seamless",
-    line1b: "Scheduling",
-    line2a: "On your",
-    line2b: "social media",
-    sub: "Plan a month of posts in an afternoon. Buddy writes the captions, picks the times, and publishes while you run the shop.",
+    eyebrow: "Social media",
+    line1: "Give your feed",
+    line2a: "a",
+    line2b: "week off",
+    cards: [
+      {
+        title: "Ideas written for you",
+        body: "Tell Buddy what's new in the shop. It drafts the post, the caption, and the hashtags in your voice, ready to approve.",
+      },
+      {
+        title: "Scheduled while you sleep",
+        body: "Buddy picks the times your customers are actually online and fills the calendar a week ahead. You just say yes.",
+      },
+      {
+        title: "Published everywhere",
+        body: "Instagram, Facebook and your website update together. Replies get drafted, and a short report lands Monday morning.",
+      },
+    ],
   },
   genWeb: {
     eyebrow: "Website generation",
-    line1: "Website Generation",
-    line2a: "in just",
-    line2b: "few clicks",
+    line1: "Your website,",
+    line2a: "built in",
+    line2b: "one sitting",
     sub: "Answer a few questions about your business and get a finished, hosted site. Edit anything in plain language.",
   },
   pricing: {
     eyebrow: "Pricing",
-    line1a: "Upgrade for",
-    line1b: "customizations",
-    line2a: "seamless",
-    line2b: "scheduling",
-    sub: "Start free. Upgrade when the posts start paying for themselves.",
+    line1: "Pricing that grows",
+    line2a: "with your",
+    line2b: "business",
+    sub: "Start on Starter. Upgrade when the posts start paying for themselves.",
     cta: "Sign up now",
     period: "/month",
     featuredBadge: "Most popular",
@@ -207,14 +165,8 @@ export const COPY = {
     eyebrow: "Ready when you are",
     line1: "Sign up for",
     line2: "free!",
-    body: "Your business now online! You focus on growing your business, while we work behind the scenes.",
+    body: "Your site goes live, your feed keeps posting, and you get your evenings back.",
     cta: "Get Started For Free",
-  },
-  testimonials: {
-    eyebrow: "Wall of love",
-    line1: "What our",
-    line2: "users",
-    line3: "say?!",
   },
   footer: { company: "Business Buddy", tagline: "Your AI business buddy." },
 } as const

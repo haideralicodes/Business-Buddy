@@ -3,42 +3,43 @@ import { buttonVariants } from "@/packages/ui/button"
 import { cn } from "@/lib/utils"
 import Logo from "@/components/Logo"
 import { COPY, LOGIN_HREF, NAV_LINKS, SIGNUP_HREF } from "./constants"
+import { Rails } from "./Structure"
 import ThemeToggle from "./ThemeToggle"
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 px-4 pt-4">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between rounded-full border border-foreground/10 bg-background/70 pl-4 pr-2 shadow-[0_1px_0_0_var(--background),0_8px_30px_-12px_rgba(0,0,0,0.25)] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-line bg-card/85 backdrop-blur-xl">
+      <Rails as="div" className="flex h-[72px] items-center justify-between px-5 md:px-10">
         <Link href="/" className="flex items-center gap-2.5">
           <Logo className="size-7" />
-          <span className="text-sm font-semibold tracking-tight">{COPY.footer.company}</span>
+          <span className="text-[15px] font-semibold tracking-tight">{COPY.footer.company}</span>
         </Link>
 
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-3.5 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground"
+              className="text-[15px] font-medium text-foreground/70 transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
           <Link
             href={LOGIN_HREF}
-            className={cn(buttonVariants({ variant: "ghost", size: "lg" }), "hidden rounded-full px-3.5 sm:inline-flex")}
+            className="hidden px-2 text-[15px] font-medium text-foreground/70 transition-colors hover:text-foreground sm:inline-flex"
           >
             {COPY.nav.login}
           </Link>
-          <Link href={SIGNUP_HREF} className={cn(buttonVariants({ variant: "pill", size: "lg" }), "px-4")}>
+          <Link href={SIGNUP_HREF} className={cn(buttonVariants({ variant: "brand", size: "lg" }), "px-5")}>
             {COPY.nav.cta}
           </Link>
         </div>
-      </div>
+      </Rails>
     </header>
   )
 }

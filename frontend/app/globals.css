@@ -10,7 +10,6 @@
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-inter);
-  --font-anzo: var(--font-anzo);
   --font-blinds: var(--font-blinds);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -45,6 +44,8 @@
   --color-surface-foreground: var(--surface-foreground);
   --color-inverse: var(--inverse);
   --color-inverse-foreground: var(--inverse-foreground);
+  --color-line: var(--line);
+  --color-hatch: var(--hatch);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -141,6 +142,9 @@
   /* Inverse blocks: footer, filled pills, the CTA band. */
   --inverse: oklch(0 0 0);
   --inverse-foreground: oklch(1 0 0);
+  /* Exposed-structure motifs: rails/dividers and the hatch stroke. */
+  --line: oklch(0.91 0.004 323);
+  --hatch: oklch(0.85 0.006 323);
   --sidebar: oklch(0.985 0.003 323);
   --sidebar-foreground: oklch(0 0 0);
   --sidebar-primary: oklch(0.733 0.245 323);
@@ -179,6 +183,8 @@
   --surface-foreground: oklch(0.985 0.005 323);
   --inverse: oklch(0.985 0.005 323);
   --inverse-foreground: oklch(0.15 0.015 323);
+  --line: oklch(1 0 0 / 9%);
+  --hatch: oklch(1 0 0 / 14%);
   --sidebar: oklch(0.19 0.02 323);
   --sidebar-foreground: oklch(0.985 0.005 323);
   --sidebar-primary: oklch(0.78 0.22 323);
@@ -202,8 +208,11 @@
       transition-duration: 0.01ms !important;
     }
   }
+  /* A tint, not a solid fill: a full-strength primary selection reads fine on
+     plain text but goes illegible on the Mark pill's own pink background, and
+     a forced text color would fight the inverse (dark) sections. */
   *::selection {
-    @apply bg-primary text-primary-foreground;
+    background-color: color-mix(in oklch, var(--primary) 45%, transparent);
   }
   body {
     @apply bg-background text-foreground;
@@ -213,25 +222,23 @@
   }
 }
 
-/* Faint dot grid, used behind the hero. Fades out toward the edges. */
-@utility bg-dot-grid {
-  background-image: radial-gradient(color-mix(in oklch, var(--foreground) 10%, transparent) 1px, transparent 1px);
-  background-size: 24px 24px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%);
+/* Diagonal hatch: 1px strokes every 9px, rising left-to-right. */
+@utility bg-hatching {
+  background-image: repeating-linear-gradient(-45deg, var(--hatch) 0 1px, transparent 1px 9px);
 }
 
-/* Primary-tinted radial glow. Stronger in dark mode where it reads as atmosphere. */
-@utility bg-glow {
-  background: radial-gradient(
-    ellipse 60% 50% at 50% 0%,
-    color-mix(in oklch, var(--primary) 22%, transparent),
-    transparent 70%
-  );
+/* Dot-grid paper (24px pitch), used as the backdrop outside the frame. */
+@utility bg-dot-paper {
+  background-image: radial-gradient(color-mix(in oklch, var(--foreground) 9%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
-.dark .bg-glow {
-  background: radial-gradient(
-    ellipse 60% 50% at 50% 0%,
-    color-mix(in oklch, var(--primary) 38%, transparent),
-    transparent 70%
-  );
+
+/* Sparse pixel dither on the accent panel, denser at the edges, clear in the middle. */
+@utility bg-dither {
+  background-image:
+    radial-gradient(color-mix(in oklch, white 40%, transparent) 1.5px, transparent 1.5px),
+    radial-gradient(color-mix(in oklch, black 22%, transparent) 1.5px, transparent 1.5px);
+  background-size: 14px 14px, 22px 22px;
+  background-position: 0 0, 7px 11px;
+  mask-image: radial-gradient(ellipse 55% 60% at 50% 50%, transparent 35%, black 100%);
 }
