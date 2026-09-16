@@ -2,38 +2,39 @@ import type { ReactNode } from "react"
 import Link from "next/link"
 import Logo from "@/components/Logo"
 import ThemeToggle from "@/components/landingPage/ThemeToggle"
+import { AppWindow } from "@/components/landingPage/HeroProductPanel"
 import { Eyebrow } from "@/components/landingPage/SectionHeading"
-import { Ticks } from "@/components/landingPage/Structure"
 import { Button } from "@/packages/ui/button"
-import { Label } from "@/packages/ui/label"
+import { Separator } from "@/packages/ui/separator"
 import { AppleIcon, FacebookIcon, GoogleIcon } from "./BrandIcons"
 
-// Invented quote for the stage. Not a real customer.
-const TESTIMONIAL = {
-  tags: ["Bakery", "Two locations"],
-  quote:
-    "I used to lose Sunday nights to captions and a half-finished website. Buddy does both now, and the site actually looks like us.",
-  name: "Nadia Rahman",
-  role: "Owner",
-  company: "Aurora Bakery",
+// What the stage says about the product. Plain claims, no invented customers.
+const STAGE = {
+  eyebrow: "What's inside",
+  line1: "Your site, your posts,",
+  line2: "one dashboard.",
+  points: ["Website built from a few questions", "Captions drafted in your voice", "A week of posts scheduled at once"],
 }
 
 /**
  * Two-column auth page inside the framed canvas: the form on the left
  * (logo, title, muted sub, fields, brand CTA, social row), a pastel stage on
- * the right carrying a testimonial card. Same tokens and radii as the landing
- * page, so it reads as the same product.
+ * the right showing the product's own dashboard. Same tokens and radii as the
+ * landing page, so it reads as the same product.
  */
 export function AuthShell({
   title,
   sub,
   children,
   footer,
+  social = true,
 }: {
   title: ReactNode
-  sub: string
+  sub: ReactNode
   children: ReactNode
   footer: ReactNode
+  /** Show the "or" divider and provider buttons. Off for reset and verify flows. */
+  social?: boolean
 }) {
   return (
     <div className="grid flex-1 lg:grid-cols-2">
@@ -53,13 +54,16 @@ export function AuthShell({
 
             <div className="mt-8">{children}</div>
 
-            <div className="my-7 flex items-center gap-4">
-              <span className="h-px flex-1 bg-line" />
-              <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted-foreground">or</span>
-              <span className="h-px flex-1 bg-line" />
-            </div>
-
-            <SocialRow />
+            {social ? (
+              <>
+                <div className="my-7 flex items-center gap-4">
+                  <Separator className="flex-1 bg-line" />
+                  <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted-foreground">or</span>
+                  <Separator className="flex-1 bg-line" />
+                </div>
+                {/* <SocialRow /> */}
+              </>
+            ) : null}
 
             <p className="mt-7 text-center text-sm text-muted-foreground">{footer}</p>
           </div>
@@ -71,29 +75,7 @@ export function AuthShell({
   )
 }
 
-export function Field({
-  id,
-  label,
-  hint,
-  children,
-}: {
-  id: string
-  label: string
-  hint?: ReactNode
-  children: ReactNode
-}) {
-  return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center justify-between">
-        <Label htmlFor={id}>{label}</Label>
-        {hint}
-      </div>
-      {children}
-    </div>
-  )
-}
-
-function SocialRow() {
+export function SocialRow() {
   const providers = [
     { name: "Google", Icon: GoogleIcon },
     { name: "Facebook", Icon: FacebookIcon },
@@ -114,32 +96,36 @@ function Stage() {
   return (
     <div className="relative hidden border-l border-line p-6 lg:flex">
       <div
-        className="relative flex flex-1 flex-col justify-end overflow-hidden rounded-xl p-6 border border-red-500"
+        className="relative flex flex-1 flex-col overflow-hidden rounded-xl p-8"
         style={{
           background:
             "linear-gradient(160deg, color-mix(in oklch, var(--primary) 34%, var(--card)) 0%, color-mix(in oklch, var(--primary) 10%, var(--card)) 55%, color-mix(in oklch, oklch(0.8 0.1 60) 30%, var(--card)) 100%)",
         }}
       >
         <div aria-hidden className="bg-dither pointer-events-none absolute inset-0 opacity-50" />
-        <Ticks />
 
-        <div className="relative flex flex-wrap gap-2">
-          {TESTIMONIAL.tags.map((t) => (
-            <Eyebrow key={t} className="h-7 bg-card/80 px-3 text-[11px] backdrop-blur">
-              {t}
-            </Eyebrow>
-          ))}
-        </div>
-        <figure className="relative mt-3 rounded-xl border border-black/5 bg-card/90 p-6 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.25)] backdrop-blur">
-          <blockquote className="text-[17px] font-medium leading-[1.5] tracking-[-0.01em]">
-            &ldquo;{TESTIMONIAL.quote}&rdquo;
-          </blockquote>
-          <figcaption className="mt-4 text-sm text-muted-foreground">
-            {TESTIMONIAL.name}
+        {/* Copy sits top-left; the window bleeds off the bottom-right underneath it. */}
+        <div className="relative z-10 max-w-[400px]">
+          <Eyebrow className="bg-card/80 backdrop-blur">{STAGE.eyebrow}</Eyebrow>
+          <p className="mt-5 text-[clamp(1.5rem,2.2vw,1.9rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
+            {STAGE.line1}
             <br />
-            {TESTIMONIAL.role}, <span className="font-semibold text-foreground">{TESTIMONIAL.company}</span>
-          </figcaption>
-        </figure>
+            {STAGE.line2}
+          </p>
+          <ul className="mt-4 space-y-1.5 text-sm text-foreground/75">
+            {STAGE.points.map((pt) => (
+              <li key={pt} className="flex items-center gap-2">
+                <span className="size-1.5 shrink-0 rounded-full bg-primary" />
+                {pt}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Product proof: our dashboard, cropped by the stage's bottom and right edges, fading at the bottom. */}
+        <div className="pointer-events-none absolute -bottom-10 left-8 w-[125%] min-w-[860px] [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
+          <AppWindow className="rounded-xl" />
+        </div>
       </div>
     </div>
   )
