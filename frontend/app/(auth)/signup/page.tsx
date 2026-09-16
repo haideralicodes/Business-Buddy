@@ -1,9 +1,7 @@
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { AuthShell, Field } from "@/components/auth/AuthShell"
+import { AuthShell } from "@/components/auth/AuthShell"
+import SignupForm from "@/components/auth/SignupForm"
 import { Prominent } from "@/components/landingPage/SectionHeading"
-import { Button } from "@/packages/ui/button"
-import { Input } from "@/packages/ui/input"
 
 export default function Signup() {
   return (
@@ -23,28 +21,7 @@ export default function Signup() {
         </>
       }
     >
-      <form className="flex flex-col gap-5">
-        <Field id="business" label="Business name">
-          <Input id="business" name="business" autoComplete="organization" placeholder="Aurora Bakery" className="h-11 px-3.5" />
-        </Field>
-        <Field id="email" label="Email">
-          <Input id="email" name="email" type="email" autoComplete="email" placeholder="you@yourbusiness.com" className="h-11 px-3.5" />
-        </Field>
-        <Field id="password" label="Password">
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="new-password"
-            placeholder="At least 8 characters"
-            className="h-11 px-3.5"
-          />
-        </Field>
-        <Button type="submit" variant="brand" size="xl" className="mt-1 w-full">
-          Create account
-          <ArrowRight data-icon="inline-end" />
-        </Button>
-      </form>
+      <SignupForm />
     </AuthShell>
   )
 }
