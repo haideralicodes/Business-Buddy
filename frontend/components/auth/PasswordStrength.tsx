@@ -35,7 +35,7 @@ export default function PasswordStrength({ value }: { value: string }) {
           />
         ))}
       </div>
-      <ul className="grid grid-cols-2 gap-x-4 gap-y-1">
+      <ul className="grid gap-x-4 gap-y-1 sm:grid-cols-2">
         {rules.map((rule) => (
           <li
             key={rule.id}
