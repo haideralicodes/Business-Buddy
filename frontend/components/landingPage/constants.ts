@@ -84,32 +84,95 @@ export const COPILOT_IDEAS = [
   { label: "Behind the scenes", poster: "MEET THE\nMAKER", tag: "OUR STORY", accent: "oklch(0.55 0.09 150)" },
 ] as const
 
-// Invented activity feed for the third social card: what happens after a post goes out.
-export const PUBLISH_TIMELINE = [
-  { icon: "post", label: "Post published", time: "9:00 AM" },
-  { icon: "reply", label: "3 replies drafted", time: "9:14 AM" },
-  {
-    icon: "report",
-    label: "Weekly report ready",
-    time: "Mon 8:00",
-    details: [
-      { k: "Reach", v: "+42%" },
-      { k: "Best post", v: "Sourdough drop" },
-      { k: "Next", v: "Assigned" },
-    ],
-  },
+// Invented state for the third social card: one post, every channel, and the
+// report that follows. All visible at rest; hover only adds a little life.
+export const PUBLISH_CHANNELS = [
+  { name: "Instagram", short: "IG", state: "Posted" },
+  { name: "Facebook", short: "FB", state: "Posted" },
+  { name: "Website", short: "Web", state: "Updated" },
 ] as const
 
-// Invented style directions for the on-brand template preview strip — each one
-// a tiny real site mockup (nav + headline + CTA) for a different invented
-// small business, not an abstract color swatch.
+export const WEEKLY_REPORT = {
+  title: "Weekly report",
+  when: "Mon 8:00",
+  rows: [
+    { k: "Reach", v: "+42%" },
+    { k: "Replies drafted", v: "3" },
+    { k: "Best post", v: "Sourdough drop" },
+  ],
+} as const
+
+// Invented sites for the template strip. Each one is a different small
+// business with its own nav, hero, sections and CTA, so the strip reads as
+// "sites like yours" rather than a colour picker. Accents are kept light
+// enough to hold up on the dark theme.
 export const TEMPLATE_STYLES = [
-  { name: "Orchid", business: "Aurora Bakery", headline: "Fresh bakes,", headlineAccent: "daily.", accent: "oklch(0.733 0.245 323)" },
-  { name: "Midnight", business: "Foundry Gym", headline: "Train with", headlineAccent: "intent.", accent: "oklch(0.35 0.05 260)" },
-  { name: "Sage", business: "Willow & Co.", headline: "Plants for", headlineAccent: "every room.", accent: "oklch(0.55 0.09 150)" },
-  { name: "Clay", business: "Terra Studio", headline: "Handmade,", headlineAccent: "not mass-made.", accent: "oklch(0.62 0.13 40)" },
-  { name: "Slate", business: "Modern Cuts", headline: "Look sharp,", headlineAccent: "book today.", accent: "oklch(0.45 0.02 260)" },
-  { name: "Amber", business: "Café Lumen", headline: "Slow mornings,", headlineAccent: "great coffee.", accent: "oklch(0.72 0.14 70)" },
+  {
+    name: "Orchid",
+    business: "Aurora Bakery",
+    kind: "Bakery · Lahore",
+    nav: ["Menu", "Orders", "Visit"],
+    headline: "Fresh bakes,",
+    headlineAccent: "daily.",
+    cta: "Order now",
+    sections: ["Sourdough", "Cakes", "Cookies"],
+    accent: "oklch(0.733 0.245 323)",
+  },
+  {
+    name: "Midnight",
+    business: "Foundry Gym",
+    kind: "Gym · Columbus",
+    nav: ["Classes", "Coaches", "Join"],
+    headline: "Train with",
+    headlineAccent: "intent.",
+    cta: "Book a class",
+    sections: ["Strength", "Mobility", "Open gym"],
+    accent: "oklch(0.6 0.14 260)",
+  },
+  {
+    name: "Sage",
+    business: "Willow & Co.",
+    kind: "Plant shop · Manchester",
+    nav: ["Shop", "Care", "Delivery"],
+    headline: "Plants for",
+    headlineAccent: "every room.",
+    cta: "Shop plants",
+    sections: ["Low light", "Pet safe", "Gifts"],
+    accent: "oklch(0.58 0.11 150)",
+  },
+  {
+    name: "Clay",
+    business: "Terra Studio",
+    kind: "Ceramics · Dubai",
+    nav: ["Collection", "Workshops", "Story"],
+    headline: "Handmade,",
+    headlineAccent: "not mass-made.",
+    cta: "See the collection",
+    sections: ["Tableware", "Vases", "Classes"],
+    accent: "oklch(0.64 0.13 40)",
+  },
+  {
+    name: "Slate",
+    business: "Modern Cuts",
+    kind: "Barber · Lagos",
+    nav: ["Services", "Barbers", "Book"],
+    headline: "Look sharp,",
+    headlineAccent: "book today.",
+    cta: "Book a chair",
+    sections: ["Cuts", "Beard", "Kids"],
+    accent: "oklch(0.55 0.05 260)",
+  },
+  {
+    name: "Amber",
+    business: "Café Lumen",
+    kind: "Café · Bengaluru",
+    nav: ["Menu", "Events", "Find us"],
+    headline: "Slow mornings,",
+    headlineAccent: "great coffee.",
+    cta: "See the menu",
+    sections: ["Coffee", "Brunch", "Beans"],
+    accent: "oklch(0.72 0.14 70)",
+  },
 ] as const
 
 export const COPY = {
@@ -139,7 +202,7 @@ export const COPY = {
       },
       {
         title: "Published everywhere",
-        body: "Instagram, Facebook and your website update together. Replies get drafted, and a short report lands Monday morning.",
+        body: "One post goes to Instagram, Facebook and your website together. Replies get drafted, and a short report lands Monday morning.",
       },
     ],
   },

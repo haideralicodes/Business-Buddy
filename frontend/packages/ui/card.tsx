@@ -2,15 +2,27 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
 
+/**
+ * The one card in the app. Corner radius comes from --radius-card; pick a
+ * variant by what the card is, not how it looks:
+ *
+ *   default  a bordered content card (pricing plan, settings block, list item)
+ *   panel    a floating product surface: bordered + the system's one drop
+ *            shadow. Used for app windows, mockups, previews.
+ *   stage    a blurred pastel surface something sits on. Pair with one of
+ *            bg-stage-brand / bg-stage-cool / bg-stage-warm.
+ *
+ * size="none" removes the built-in padding and gap for cards that lay out
+ * their own interior (mockups, media).
+ */
 const cardVariants = cva(
-  "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl py-(--card-spacing) text-sm [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
+  "group/card relative flex flex-col gap-(--card-spacing) overflow-hidden rounded-card py-(--card-spacing) text-sm [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 data-[size=none]:[--card-spacing:0] *:[img:first-child]:rounded-t-card *:[img:last-child]:rounded-b-card",
   {
     variants: {
       variant: {
-        default: "bg-card text-card-foreground ring-1 ring-foreground/10",
-        // Landing page variants
-        flat: "bg-card text-card-foreground",
-        ghost: "bg-transparent text-foreground shadow-[0_2px_10px_rgba(0,0,0,0.1)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.5)]",
+        default: "border border-line bg-card text-card-foreground",
+        panel: "border border-line bg-card text-card-foreground shadow-panel",
+        stage: "text-foreground",
       },
     },
     defaultVariants: {
@@ -25,7 +37,7 @@ function Card({
   variant = "default",
   ...props
 }: React.ComponentProps<"div"> &
-  VariantProps<typeof cardVariants> & { size?: "default" | "sm" }) {
+  VariantProps<typeof cardVariants> & { size?: "default" | "sm" | "none" }) {
   return (
     <div
       data-slot="card"
@@ -41,7 +53,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card-header"
       className={cn(
-        "group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)",
+        "group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-card px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)",
         className
       )}
       {...props}
@@ -100,7 +112,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card-footer"
       className={cn(
-        "flex items-center rounded-b-xl border-t bg-muted/50 p-(--card-spacing)",
+        "flex items-center rounded-b-card border-t border-line bg-muted/50 p-(--card-spacing)",
         className
       )}
       {...props}

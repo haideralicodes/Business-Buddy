@@ -1,8 +1,8 @@
 import Link from "next/link"
-import { ArrowRight, Check } from "lucide-react"
+import { Check } from "lucide-react"
 import { Badge } from "@/packages/ui/badge"
 import { Card, CardContent, CardFooter, CardHeader } from "@/packages/ui/card"
-import { buttonVariants } from "@/packages/ui/button"
+import { ButtonArrow, ButtonLabel, buttonVariants } from "@/packages/ui/button"
 import { cn } from "@/lib/utils"
 import { COPY, PLANS, SIGNUP_HREF } from "./constants"
 import { Prominent, SectionHeading } from "./SectionHeading"
@@ -29,14 +29,11 @@ export default function Pricing() {
           {PLANS.map((plan) => (
             <Card
               key={plan.name}
-              variant="flat"
-              className={cn(
-                "relative gap-0 rounded-xl border border-line py-0",
-                plan.featured && "border-primary md:-mt-3"
-              )}
+              size="none"
+              className={cn(plan.featured && "border-primary md:-mt-3")}
             >
               {plan.featured ? (
-                <Badge className="absolute right-5 top-5 h-6 rounded-md px-2 font-mono text-[10px] uppercase tracking-[0.06em]">
+                <Badge className="absolute right-5 top-5 h-6 px-2 font-mono text-[10px] uppercase tracking-[0.06em]">
                   {COPY.pricing.featuredBadge}
                 </Badge>
               ) : null}
@@ -53,20 +50,17 @@ export default function Pricing() {
               <CardContent className="px-6 pt-5">
                 <Link
                   href={SIGNUP_HREF}
-                  className={cn(
-                    buttonVariants({ variant: plan.featured ? "brand" : "secondary", size: "xl" }),
-                    "w-full rounded-full"
-                  )}
+                  className={buttonVariants({ variant: plan.featured ? "default" : "secondary", size: "xl", className: "w-full" })}
                 >
-                  {COPY.pricing.cta}
-                  <ArrowRight data-icon="inline-end" />
+                  <ButtonLabel>{COPY.pricing.cta}</ButtonLabel>
+                  <ButtonArrow />
                 </Link>
               </CardContent>
 
               <CardFooter className="mt-5 flex-col items-start gap-2.5 border-t border-line bg-transparent px-6 py-5">
                 {plan.features.map((feature) => (
                   <p key={feature} className="flex items-start gap-2.5 text-sm leading-snug">
-                    <Check className="mt-0.5 size-4 shrink-0 text-primary" strokeWidth={2.5} />
+                    <Check className="mt-0.5 size-4 shrink-0 text-primary-ink" strokeWidth={2.5} />
                     {feature}
                   </p>
                 ))}

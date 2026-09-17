@@ -27,6 +27,7 @@
 #claude
 /.claude
 /docs
+Design.md
 
 # debug
 npm-debug.log*

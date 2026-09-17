@@ -5,6 +5,7 @@ import ThemeToggle from "@/components/landingPage/ThemeToggle"
 import { AppWindow } from "@/components/landingPage/HeroProductPanel"
 import { Eyebrow } from "@/components/landingPage/SectionHeading"
 import { Button } from "@/packages/ui/button"
+import { Card } from "@/packages/ui/card"
 import { Separator } from "@/packages/ui/separator"
 import { AppleIcon, FacebookIcon, GoogleIcon } from "./BrandIcons"
 
@@ -84,7 +85,7 @@ export function SocialRow() {
   return (
     <div className="grid grid-cols-3 gap-3">
       {providers.map(({ name, Icon }) => (
-        <Button key={name} type="button" variant="secondary" size="xl" className="rounded-full" aria-label={`Continue with ${name}`}>
+        <Button key={name} type="button" variant="secondary" size="xl" aria-label={`Continue with ${name}`}>
           <Icon className="size-5" />
         </Button>
       ))}
@@ -94,17 +95,10 @@ export function SocialRow() {
 
 function Stage() {
   return (
-    <div className="relative hidden border-l border-line p-6 lg:flex">
-      <div
-        className="relative flex flex-1 flex-col overflow-hidden rounded-xl p-8"
-        style={{
-          background:
-            "linear-gradient(160deg, color-mix(in oklch, var(--primary) 34%, var(--card)) 0%, color-mix(in oklch, var(--primary) 10%, var(--card)) 55%, color-mix(in oklch, oklch(0.8 0.1 60) 30%, var(--card)) 100%)",
-        }}
-      >
+    <div className="relative hidden border-l border-line p-6 lg:flex select-none">
+      <Card variant="stage" size="none" className="flex flex-1 flex-col bg-stage-brand p-8">
         <div aria-hidden className="bg-dither pointer-events-none absolute inset-0 opacity-50" />
 
-        {/* Copy sits top-left; the window bleeds off the bottom-right underneath it. */}
         <div className="relative z-10 max-w-[400px]">
           <Eyebrow className="bg-card/80 backdrop-blur">{STAGE.eyebrow}</Eyebrow>
           <p className="mt-5 text-[clamp(1.5rem,2.2vw,1.9rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
@@ -122,11 +116,15 @@ function Stage() {
           </ul>
         </div>
 
-        {/* Product proof: our dashboard, cropped by the stage's bottom and right edges, fading at the bottom. */}
-        <div className="pointer-events-none absolute -bottom-10 left-8 w-[125%] min-w-[860px] [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
-          <AppWindow className="rounded-xl" />
+        {/* Product proof: our dashboard, in flow under the copy so a short laptop
+            viewport can't push it up over the text. It takes whatever height is
+            left, bleeds off the right and bottom edges, and fades at the bottom. */}
+        <div className="pointer-events-none relative mt-8 min-h-[220px] flex-1 overflow-hidden">
+          <div className="absolute left-0 top-0 w-[125%] min-w-[860px] [mask-image:linear-gradient(to_bottom,black_45%,transparent_95%)]">
+            <AppWindow />
+          </div>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

@@ -15,7 +15,7 @@ export default function Login() {
       footer={
         <>
           New to Business Buddy?{" "}
-          <Link href="/signup" className="font-medium text-primary hover:underline">
+          <Link href="/signup" className="font-medium text-primary-ink hover:underline">
             Create an account
           </Link>
         </>

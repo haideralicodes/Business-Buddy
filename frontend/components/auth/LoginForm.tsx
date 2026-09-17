@@ -38,7 +38,6 @@ export default function LoginForm() {
               autoComplete="email"
               placeholder="jhon.doe@gmail.com"
               aria-invalid={fieldState.invalid}
-              className="h-11 px-3.5"
             />
             <FieldError errors={[fieldState.error]} />
           </Field>

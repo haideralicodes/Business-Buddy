@@ -38,7 +38,6 @@ export default function SignupForm() {
               autoComplete="name"
               placeholder="Jhon Doe"
               aria-invalid={fieldState.invalid}
-              className="h-11 px-3.5"
             />
             <FieldError errors={[fieldState.error]} />
           </Field>
@@ -58,7 +57,6 @@ export default function SignupForm() {
               autoComplete="email"
               placeholder="jhon.doe@gmail.com"
               aria-invalid={fieldState.invalid}
-              className="h-11 px-3.5"
             />
             <FieldError errors={[fieldState.error]} />
           </Field>

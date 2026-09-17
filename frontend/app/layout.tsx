@@ -26,14 +26,14 @@ export const metadata: Metadata = {
   description: "Your AI Business Buddy!",
 };
 
-// Runs before paint so a stored dark preference doesn't flash light on load.
+// Runs before paint so the stored theme (or the OS preference) applies without a flash. The class is only ever set here and in ThemeToggle.
 const themeInitScript = `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})();`
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} ${blinds.variable} h-full antialiased dark`}
+      className={`${inter.variable} ${geistMono.variable} ${blinds.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

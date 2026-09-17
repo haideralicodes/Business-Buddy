@@ -21,7 +21,7 @@ export default function PasswordInput({
 
   return (
     <div className="relative">
-      <Input type={visible ? "text" : "password"} value={value} className={cn("h-11 px-3.5 pr-11", className)} {...props} />
+      <Input type={visible ? "text" : "password"} value={value} className={cn("pr-11", className)} {...props} />
       <Button
         type="button"
         variant="ghost"

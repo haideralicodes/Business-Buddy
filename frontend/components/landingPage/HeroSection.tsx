@@ -1,6 +1,5 @@
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { buttonVariants } from "@/packages/ui/button"
+import { ButtonArrow, ButtonLabel, buttonVariants } from "@/packages/ui/button"
 import { cn } from "@/lib/utils"
 import HeroProductPanel from "./HeroProductPanel"
 import { COPY, SIGNUP_HREF } from "./constants"
@@ -37,11 +36,11 @@ export default function HeroSection() {
           </p>
 
           <div className="animate-fade-up mt-7 flex flex-wrap items-center justify-center gap-3" style={{ animationDelay: "240ms" }}>
-            <Link href={SIGNUP_HREF} className={cn(buttonVariants({ variant: "brand", size: "xl" }), "pr-4")}>
-              {COPY.hero.primaryCta}
-              <ArrowRight data-icon="inline-end" />
+            <Link href={SIGNUP_HREF} className={buttonVariants({ size: "xl" })}>
+              <ButtonLabel>{COPY.hero.primaryCta}</ButtonLabel>
+              <ButtonArrow />
             </Link>
-            <a href="#pricing" className={cn(buttonVariants({ variant: "secondary", size: "xl" }), "rounded-full")}>
+            <a href="#pricing" className={cn(buttonVariants({ variant: "secondary", size: "xl" }))}>
               {COPY.hero.secondaryCta}
             </a>
           </div>
