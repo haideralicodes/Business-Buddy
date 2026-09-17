@@ -1,5 +1,6 @@
 import { Bell, CalendarDays, Globe, LayoutDashboard, MessageSquare, PenLine, Search, Sparkles } from "lucide-react"
 import Logo from "@/components/Logo"
+import { Card } from "@/packages/ui/card"
 import { cn } from "@/lib/utils"
 import { HERO_APP } from "./constants"
 
@@ -10,7 +11,7 @@ function StateChip({ state }: { state: string }) {
     state === "Posted"
       ? "bg-emerald-500/12 text-emerald-700 dark:text-emerald-400"
       : state === "Scheduled"
-        ? "bg-primary/15 text-primary"
+        ? "bg-primary/15 text-primary-ink"
         : "bg-foreground/8 text-muted-foreground"
   return <span className={cn("rounded-md px-1.5 py-0.5 text-[10px] font-medium", tone)}>{state}</span>
 }
@@ -22,12 +23,7 @@ function StateChip({ state }: { state: string }) {
  */
 export function AppWindow({ className }: { className?: string }) {
   return (
-<div
-      className={cn(
-        "overflow-hidden rounded-t-xl border border-b-0 border-black/10 bg-card text-card-foreground shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)]",
-        className
-      )}
-    >
+<Card variant="panel" size="none" className={cn("rounded-b-none border-b-0 select-none", className)}>
   {/* Title bar */}
   <div className="flex items-center gap-3 border-b border-line px-4 py-2.5">
     <div className="flex items-center gap-1.5">
@@ -116,7 +112,7 @@ export function AppWindow({ className }: { className?: string }) {
             </div>
             <div className="p-2.5">
               <p className="text-[13px] font-bold leading-tight tracking-tight">
-                Fresh bakes, <span className="text-primary">daily.</span>
+                Fresh bakes, <span className="text-primary-ink">daily.</span>
               </p>
               <span className="mt-1.5 inline-block rounded-full bg-primary px-2 py-0.5 text-[9px] font-semibold text-primary-foreground">
                 Order now
@@ -153,15 +149,15 @@ export function AppWindow({ className }: { className?: string }) {
       </div>
     </div>
   </div>
-</div>
+</Card>
   )
 }
 
 // Rail-to-rail accent panel under the hero, with the window cropped at its bottom edge.
 export default function HeroProductPanel() {
   return (
-    <div className="relative bg-primary">
-      <div aria-hidden className="bg-dither pointer-events-none absolute inset-0" />
+    <div className="bg-stage-brand relative">
+      <div aria-hidden className="bg-dither pointer-events-none absolute inset-0 opacity-60" />
       <div className="relative mx-auto w-[92%] max-w-[1180px] pt-12 md:pt-14">
         <AppWindow />
       </div>

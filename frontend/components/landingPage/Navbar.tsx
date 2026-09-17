@@ -35,7 +35,7 @@ export default function Navbar() {
           >
             {COPY.nav.login}
           </Link>
-          <Link href={SIGNUP_HREF} className={cn(buttonVariants({ variant: "brand", size: "lg" }), "px-5")}>
+          <Link href={SIGNUP_HREF} className={cn(buttonVariants({ size: "lg" }), "px-5")}>
             {COPY.nav.cta}
           </Link>
         </div>

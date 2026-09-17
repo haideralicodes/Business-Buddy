@@ -24,7 +24,7 @@ export default function VerifyEmail() {
       footer={
         <>
           Wrong email?{" "}
-          <Link href="/signup" className="font-medium text-primary hover:underline">
+          <Link href="/signup" className="font-medium text-primary-ink hover:underline">
             Start over
           </Link>
         </>

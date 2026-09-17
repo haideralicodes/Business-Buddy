@@ -36,6 +36,7 @@
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -53,6 +54,16 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  /* Shape tokens: every button, card and field reads its corner from here. */
+  --radius-button: var(--radius-button);
+  --radius-card: var(--radius-card);
+  --radius-field: var(--radius-field);
+  /* The one drop shadow in the system (floating product panels). */
+  --shadow-panel: var(--shadow-panel);
+  /* House easing: fast start, long settle. All transitions use it unless told otherwise. */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --default-transition-duration: 300ms;
+  --default-transition-timing-function: var(--ease-soft);
   --animate-spin-slow: spin-slow 15s linear infinite;
   --animate-marquee-x: marquee-x 40s linear infinite;
   --animate-marquee-y: marquee-y 32s linear infinite;
@@ -120,6 +131,11 @@
   --popover-foreground: oklch(0 0 0);
   --primary: oklch(0.733 0.245 323);
   --primary-foreground: oklch(0 0 0);
+  /* Primary as *text*. The brand pink is too light to read at body sizes on a
+     white card (about 2.4:1), so small pink text uses this deeper cut. In dark
+     mode it is the same as --primary. Use text-primary-ink for links, chips
+     and captions; keep text-primary for the display word and icons. */
+  --primary-ink: oklch(0.5 0.24 323);
   --secondary: oklch(0.952 0.005 323);
   --secondary-foreground: oklch(0 0 0);
   --muted: oklch(0.952 0.005 323);
@@ -136,6 +152,17 @@
   --chart-4: oklch(0.85 0.12 323);
   --chart-5: oklch(0.3 0.08 323);
   --radius: 0.625rem;
+  /* Shape: actions are pills, surfaces are soft, fields sit between. Change
+     these three and every Button / Card / Input in the app follows. */
+  --radius-button: 9999px;
+  --radius-card: calc(var(--radius) * 1.4);
+  --radius-field: var(--radius);
+  --shadow-panel: 0 20px 50px -20px rgb(0 0 0 / 0.25);
+  /* Stage gradients: the blurred pastel surfaces product proof sits on.
+     Mixed from --card so they adapt to both themes on their own. */
+  --stage-brand: linear-gradient(160deg, color-mix(in oklch, var(--primary) 34%, var(--card)) 0%, color-mix(in oklch, var(--primary) 10%, var(--card)) 55%, color-mix(in oklch, oklch(0.8 0.1 60) 30%, var(--card)) 100%);
+  --stage-cool: linear-gradient(180deg, color-mix(in oklch, oklch(0.7 0.12 250) 28%, var(--card)) 0%, color-mix(in oklch, oklch(0.8 0.1 60) 30%, var(--card)) 100%);
+  --stage-warm: linear-gradient(180deg, color-mix(in oklch, oklch(0.8 0.1 60) 34%, var(--card)) 0%, color-mix(in oklch, oklch(0.7 0.12 250) 26%, var(--card)) 100%);
   /* Section surfaces: the #EFEFEF panels the landing page is built from. */
   --surface: oklch(0.945 0.006 323);
   --surface-foreground: oklch(0 0 0);
@@ -164,6 +191,7 @@
   --popover-foreground: oklch(0.985 0.005 323);
   --primary: oklch(0.78 0.22 323);
   --primary-foreground: oklch(0 0 0);
+  --primary-ink: oklch(0.78 0.22 323);
   --secondary: oklch(0.26 0.02 323);
   --secondary-foreground: oklch(0.985 0.005 323);
   --muted: oklch(0.26 0.02 323);
@@ -185,6 +213,7 @@
   --inverse-foreground: oklch(0.15 0.015 323);
   --line: oklch(1 0 0 / 9%);
   --hatch: oklch(1 0 0 / 14%);
+  --shadow-panel: 0 20px 50px -20px rgb(0 0 0 / 0.6);
   --sidebar: oklch(0.19 0.02 323);
   --sidebar-foreground: oklch(0.985 0.005 323);
   --sidebar-primary: oklch(0.78 0.22 323);
@@ -233,11 +262,22 @@
   background-size: 24px 24px;
 }
 
+/* Stage surfaces. Pair with Card variant="stage". */
+@utility bg-stage-brand {
+  background-image: var(--stage-brand);
+}
+@utility bg-stage-cool {
+  background-image: var(--stage-cool);
+}
+@utility bg-stage-warm {
+  background-image: var(--stage-warm);
+}
+
 /* Sparse pixel dither on the accent panel, denser at the edges, clear in the middle. */
 @utility bg-dither {
   background-image:
     radial-gradient(color-mix(in oklch, white 40%, transparent) 1.5px, transparent 1.5px),
-    radial-gradient(color-mix(in oklch, black 22%, transparent) 1.5px, transparent 1.5px);
+    radial-gradient(color-mix(in oklch, black 12%, transparent) 1.5px, transparent 1.5px);
   background-size: 14px 14px, 22px 22px;
   background-position: 0 0, 7px 11px;
   mask-image: radial-gradient(ellipse 55% 60% at 50% 50%, transparent 35%, black 100%);
