@@ -42,7 +42,7 @@ export function Prominent({ children, className }: { children: ReactNode; classN
 // Prominent word on a solid brand pill. Reserved for the closing CTA.
 export function Mark({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <Prominent className={cn("rounded-md bg-primary pl-[0.18em] pr-[0.3em] text-primary-foreground", className)}>
+    <Prominent className={cn("rounded-md bg-primary text-primary-foreground", className)}>
       {children}
     </Prominent>
   )
