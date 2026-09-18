@@ -19,7 +19,7 @@ export default function Pricing() {
             <>
               {COPY.pricing.line1}
               <br />
-              {COPY.pricing.line2a} <Prominent className="text-primary">{COPY.pricing.line2b}</Prominent>
+              {COPY.pricing.line2a} <Prominent>{COPY.pricing.line2b}</Prominent>
             </>
           }
           sub={COPY.pricing.sub}
@@ -33,15 +33,15 @@ export default function Pricing() {
               className={cn(plan.featured && "border-primary md:-mt-3")}
             >
               {plan.featured ? (
-                <Badge className="absolute right-5 top-5 h-6 px-2 font-mono text-[10px] uppercase tracking-[0.06em]">
+                <Badge className="absolute right-5 top-5 h-6 px-2 font-mono text-label uppercase">
                   {COPY.pricing.featuredBadge}
                 </Badge>
               ) : null}
 
               <CardHeader className="gap-1 px-6 pt-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted-foreground">{plan.name}</p>
+                <p className="font-mono text-label uppercase text-muted-foreground">{plan.name}</p>
                 <p className="mt-3 flex items-baseline gap-1">
-                  <span className="text-[40px] font-semibold leading-none tracking-[-0.03em] lg:text-[44px]">{plan.price}</span>
+                  <span className="text-heading font-semibold leading-none">{plan.price}</span>
                   <span className="text-sm text-muted-foreground">{COPY.pricing.period}</span>
                 </p>
                 <p className="text-sm text-muted-foreground">{plan.tagline}</p>
@@ -52,7 +52,7 @@ export default function Pricing() {
                   href={SIGNUP_HREF}
                   className={buttonVariants({ variant: plan.featured ? "default" : "secondary", size: "xl", className: "w-full" })}
                 >
-                  <ButtonLabel>{COPY.pricing.cta}</ButtonLabel>
+                  <ButtonLabel>{COPY.pricing.cta} {plan.name}</ButtonLabel>
                   <ButtonArrow />
                 </Link>
               </CardContent>

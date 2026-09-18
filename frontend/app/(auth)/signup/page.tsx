@@ -8,7 +8,7 @@ export default function Signup() {
     <AuthShell
       title={
         <>
-          Meet your <Prominent className="text-primary">Buddy</Prominent>
+          Meet your <Prominent>Buddy</Prominent>
         </>
       }
       sub="Tell us about your business once. Buddy builds the site, writes the posts, and keeps the calendar full."

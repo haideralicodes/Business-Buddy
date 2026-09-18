@@ -22,7 +22,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        // Ring is the brand pink, so on a pink button the focus ring is the foreground instead.
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:border-foreground/60 focus-visible:ring-foreground/30",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         inverse: "bg-inverse text-inverse-foreground hover:bg-inverse/85",
@@ -45,6 +46,8 @@ const buttonVariants = cva(
         "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-3",
         "icon-sm": "size-7",
         "icon-lg": "size-9",
+        // 44px: the touch-target floor. Use for any icon button a thumb has to hit.
+        "icon-xl": "size-11 [&_svg:not([class*='size-'])]:size-5",
       },
     },
     defaultVariants: {

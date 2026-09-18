@@ -176,7 +176,7 @@ export const TEMPLATE_STYLES = [
 ] as const
 
 export const COPY = {
-  nav: { login: "Log in", cta: "Get started" },
+  nav: { login: "Log in", cta: "Start for free" },
   hero: {
     eyebrow: "Website + social, one login",
     line1: "Your business online,",
@@ -219,7 +219,7 @@ export const COPY = {
     line2a: "with your",
     line2b: "business",
     sub: "Start on Starter. Upgrade when the posts start paying for themselves.",
-    cta: "Sign up now",
+    cta: "Start on",
     period: "/month",
     featuredBadge: "Most popular",
   },
@@ -228,7 +228,7 @@ export const COPY = {
     line1: "Sign up for",
     line2: "free!",
     body: "Your site goes live, your feed keeps posting, and you get your evenings back.",
-    cta: "Get Started For Free",
+    cta: "Start for free",
   },
   footer: { company: "Business Buddy", tagline: "Your AI business buddy." },
 } as const

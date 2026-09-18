@@ -40,7 +40,7 @@ export default function ThemeToggle() {
   return (
     <Button
       variant="ghost"
-      size="icon-lg"
+      size="icon-xl"
       aria-label={`Switch to ${next} mode`}
       onClick={() => applyTheme(next)}
     >

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter } from "next/font/google";
-import localFont from "next/font/local";
+import { Geist_Mono, Inter, Nothing_You_Could_Do } from "next/font/google";
 import "./globals.css";
 
 // Primary typeface for the whole app. Display faces below are for single emphasized words only.
@@ -14,10 +13,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Display face: used to make one word in a headline prominent, never for running text.
-const blinds = localFont({
-  src: "./fonts/BlindsAudience.otf",
-  variable: "--font-blinds",
+// Display face: one word per headline, through <Prominent>. A handwritten
+// script, single weight; <Prominent> compensates for its light stroke and
+// small x-height with size, not weight.
+const display = Nothing_You_Could_Do({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -33,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} ${blinds.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} ${display.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

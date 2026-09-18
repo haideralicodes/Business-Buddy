@@ -17,9 +17,9 @@ export default function PasswordStrength({ value }: { value: string }) {
   const started = value.length > 0
 
   return (
-    <div className="mt-2.5 flex flex-col gap-2" aria-live="polite">
+    <div className="flex flex-col gap-2" aria-live="polite">
       {/* Meter spans the full input width; the label sits above it so it never steals bar length. */}
-      <div className="flex h-3.5 items-end justify-end">
+      <div className="flex items-end justify-end">
         <span className={cn("text-[11px] leading-none font-medium transition-opacity duration-300", started ? "opacity-100" : "opacity-0")}>
           {label}
         </span>

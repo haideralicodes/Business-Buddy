@@ -12,7 +12,7 @@ export default function VerifyEmail() {
       social={false}
       title={
         <>
-          Check your <Prominent className="text-primary">inbox</Prominent>
+          Check your <Prominent>inbox</Prominent>
         </>
       }
       sub={

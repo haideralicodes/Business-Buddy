@@ -5,7 +5,7 @@ import ThemeToggle from "@/components/landingPage/ThemeToggle"
 import { AppWindow } from "@/components/landingPage/HeroProductPanel"
 import { Eyebrow } from "@/components/landingPage/SectionHeading"
 import { Button } from "@/packages/ui/button"
-import { Card } from "@/packages/ui/card"
+import { Stage as StageSurface } from "@/components/landingPage/Stage"
 import { Separator } from "@/packages/ui/separator"
 import { AppleIcon, FacebookIcon, GoogleIcon } from "./BrandIcons"
 
@@ -28,13 +28,13 @@ export function AuthShell({
   sub,
   children,
   footer,
-  social = true,
+  social = false,
 }: {
   title: ReactNode
   sub: ReactNode
   children: ReactNode
   footer: ReactNode
-  /** Show the "or" divider and provider buttons. Off for reset and verify flows. */
+  /** Show the "or" divider and provider buttons. Off until providers are wired. */
   social?: boolean
 }) {
   return (
@@ -43,15 +43,17 @@ export function AuthShell({
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5">
             <Logo className="size-7" />
-            <span className="text-[15px] font-semibold tracking-tight">Business Buddy</span>
+            <span className="text-body font-semibold tracking-tight">Business Buddy</span>
           </Link>
           <ThemeToggle />
         </div>
 
-        <div className="h-full w-full flex items-center justify-center">
-          <div className="my-auto w-full max-w-[440px] py-12">
-            <h1 className="text-[clamp(2rem,3vw,2.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">{title}</h1>
-            <p className="mt-3 text-[15px] leading-[1.55] text-muted-foreground">{sub}</p>
+        {/* Top-aligned at a fixed offset so the title sits in the same place on every auth page,
+            whatever the form's height. */}
+        <div className="flex w-full justify-center pt-12 lg:pt-20">
+          <div className="w-full max-w-[440px] pb-12">
+            <h1 className="text-heading font-semibold">{title}</h1>
+            <p className="mt-3 text-body text-muted-foreground">{sub}</p>
 
             <div className="mt-8">{children}</div>
 
@@ -59,14 +61,14 @@ export function AuthShell({
               <>
                 <div className="my-7 flex items-center gap-4">
                   <Separator className="flex-1 bg-line" />
-                  <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted-foreground">or</span>
+                  <span className="font-mono text-label uppercase text-muted-foreground">or</span>
                   <Separator className="flex-1 bg-line" />
                 </div>
-                {/* <SocialRow /> */}
+                <SocialRow />
               </>
             ) : null}
 
-            <p className="mt-7 text-center text-sm text-muted-foreground">{footer}</p>
+            <p className="mt-7 text-center text-body text-muted-foreground">{footer}</p>
           </div>
         </div>
       </div>
@@ -96,17 +98,16 @@ export function SocialRow() {
 function Stage() {
   return (
     <div className="relative hidden border-l border-line p-6 lg:flex select-none">
-      <Card variant="stage" size="none" className="flex flex-1 flex-col bg-stage-brand p-8">
-        <div aria-hidden className="bg-dither pointer-events-none absolute inset-0 opacity-50" />
+      <StageSurface dither className="flex flex-1 flex-col p-8">
 
         <div className="relative z-10 max-w-[400px]">
           <Eyebrow className="bg-card/80 backdrop-blur">{STAGE.eyebrow}</Eyebrow>
-          <p className="mt-5 text-[clamp(1.5rem,2.2vw,1.9rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
+          <p className="mt-5 text-subheading font-semibold">
             {STAGE.line1}
             <br />
             {STAGE.line2}
           </p>
-          <ul className="mt-4 space-y-1.5 text-sm text-foreground/75">
+          <ul className="mt-4 space-y-1.5 text-body text-foreground/75">
             {STAGE.points.map((pt) => (
               <li key={pt} className="flex items-center gap-2">
                 <span className="size-1.5 shrink-0 rounded-full bg-primary" />
@@ -124,7 +125,7 @@ function Stage() {
             <AppWindow />
           </div>
         </div>
-      </Card>
+      </StageSurface>
     </div>
   )
 }
