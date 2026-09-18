@@ -20,16 +20,16 @@ export default function HeroSection() {
           <Eyebrow className="animate-fade-up">{COPY.hero.eyebrow}</Eyebrow>
 
           <h1
-            className="animate-fade-up mt-7 max-w-[960px] text-balance text-[clamp(2.75rem,5.5vw,4.75rem)] font-semibold leading-[1.0] tracking-[-0.04em]"
+            className="animate-fade-up mt-7 max-w-[960px] text-balance text-display font-normal"
             style={{ animationDelay: "80ms" }}
           >
             {COPY.hero.line1}
             <br className="hidden sm:block" />{" "}
-            {COPY.hero.line2a} <Prominent className="text-primary">{COPY.hero.line2b}</Prominent>
+            {COPY.hero.line2a} <Prominent>{COPY.hero.line2b}</Prominent>
           </h1>
 
           <p
-            className="animate-fade-up mt-5 max-w-[520px] text-balance text-[18px] leading-[1.55] text-muted-foreground md:text-[19px]"
+            className="animate-fade-up mt-5 max-w-[520px] text-balance text-body-lg text-muted-foreground"
             style={{ animationDelay: "160ms" }}
           >
             {COPY.hero.sub}

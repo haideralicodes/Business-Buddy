@@ -53,7 +53,7 @@ export default function ForgotPasswordForm() {
         {sent ? "Resend link" : "Send reset link"}
       </AuthSubmit>
       {sent ? (
-        <FieldDescription className="-mt-1 text-center text-[13px]">
+        <FieldDescription className="-mt-1 text-center text-caption">
           Didn&rsquo;t get it? Check spam, or resend in a minute.
         </FieldDescription>
       ) : null}

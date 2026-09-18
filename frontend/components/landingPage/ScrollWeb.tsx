@@ -1,13 +1,15 @@
 import { Card } from "@/packages/ui/card"
 import { TEMPLATE_STYLES } from "./constants"
+import DragStrip from "./DragStrip"
 
 /**
  * Template strip: six invented small-business sites, each a real page
  * thumbnail (nav, hero with image, three sections, footer) built from our own
- * tokens on the shared `panel` card. The strip is decoration for the copy
- * above it, so it is hidden from assistive tech and never lifts on hover.
+ * tokens on the shared `panel` card. It glides on its own and stops the moment
+ * you hover or grab it (see DragStrip). Thumbnails are decoration for the copy
+ * above them, so they're hidden from assistive tech, and they never lift on
+ * hover.
  */
-const styles = [...TEMPLATE_STYLES, ...TEMPLATE_STYLES]
 
 type Site = (typeof TEMPLATE_STYLES)[number]
 
@@ -72,16 +74,14 @@ function SitePreview({ site }: { site: Site }) {
 }
 
 export default function ScrollWeb() {
+  // DragStrip renders its children twice for the loop, so keys stay unique per copy.
   return (
-    <div
-      aria-hidden
-      className="relative mt-14 w-full overflow-hidden py-6 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
-    >
-      <div className="flex w-max animate-marquee-x items-start gap-6 hover:[animation-play-state:paused]">
-        {styles.map((site, index) => (
-          <SitePreview key={`${site.name}-${index}`} site={site} />
-        ))}
-      </div>
-    </div>
+    <DragStrip className="mt-14 w-full [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
+      {TEMPLATE_STYLES.map((site) => (
+        <div key={site.name} aria-hidden>
+          <SitePreview site={site} />
+        </div>
+      ))}
+    </DragStrip>
   )
 }

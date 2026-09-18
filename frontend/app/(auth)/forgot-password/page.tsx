@@ -9,7 +9,7 @@ export default function ForgotPassword() {
       social={false}
       title={
         <>
-          Forgot your <Prominent className="text-primary">password?</Prominent>
+          Forgot your <Prominent>password?</Prominent>
         </>
       }
       sub="Enter the email you signed up with and we'll send a link to set a new one."

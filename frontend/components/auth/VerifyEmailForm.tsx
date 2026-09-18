@@ -67,9 +67,9 @@ export default function VerifyEmailForm({ email }: { email: string }) {
         Verify email
       </AuthSubmit>
 
-      <FieldDescription className="-mt-1 text-center text-[13px]">
+      <FieldDescription className="-mt-1 text-center text-caption">
         Didn&rsquo;t get a code?{" "}
-        <Button type="button" variant="link" size="xs" className="h-auto p-0 text-[13px]" onClick={resend}>
+        <Button type="button" variant="link" size="xs" className="h-auto p-0 text-caption" onClick={resend}>
           Send a new one
         </Button>
       </FieldDescription>

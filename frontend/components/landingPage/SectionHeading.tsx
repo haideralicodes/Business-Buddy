@@ -11,7 +11,7 @@ export function Eyebrow({ children, className }: { children: ReactNode; classNam
   return (
     <span
       className={cn(
-        "relative inline-flex h-9 items-center bg-surface px-4 font-mono text-[12px] uppercase tracking-[0.06em] text-foreground",
+        "relative inline-flex h-9 items-center bg-surface px-4 font-mono text-label uppercase text-foreground",
         className
       )}
     >
@@ -24,10 +24,19 @@ export function Eyebrow({ children, className }: { children: ReactNode; classNam
   )
 }
 
-// The one prominent word in a headline. Everything else is Inter; this is the
-// single display face in the system.
+/**
+ * The one prominent word in a headline, in the handwritten display face.
+ * The script has one weight and a small x-height, so it is set larger than
+ * the headline (1.18em) rather than bolder, with the headline's negative
+ * tracking undone (scripts need their connecting strokes to touch). Colour is
+ * primary-ink: the brand pink in dark mode, a readable cut of it in light.
+ */
 export function Prominent({ children, className }: { children: ReactNode; className?: string }) {
-  return <span className={cn("font-normal font-blinds italic", className)}>{children}</span>
+  return (
+    <span className={cn("font-display text-[1.18em] font-normal not-italic leading-none tracking-normal text-primary", className)}>
+      {children}
+    </span>
+  )
 }
 
 // Prominent word on a solid brand pill. Reserved for the closing CTA.
@@ -65,7 +74,7 @@ export function SectionHeading({
       )}
     >
       <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="mt-7 text-balance text-[clamp(2.25rem,3.6vw,3rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+      <h2 className="mt-7 text-balance text-heading font-normal">
         {title}
       </h2>
       {sub ? (

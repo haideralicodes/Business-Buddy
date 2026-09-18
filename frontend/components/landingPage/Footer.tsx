@@ -12,14 +12,14 @@ export default function Footer() {
           <div className="flex flex-col gap-3">
             <Link href="/" className="flex items-center gap-2.5">
               <Logo className="size-7" />
-              <span className="text-[15px] font-semibold tracking-tight">{COPY.footer.company}</span>
+              <span className="text-body font-semibold tracking-tight">{COPY.footer.company}</span>
             </Link>
             <p className="text-sm text-muted-foreground">{COPY.footer.tagline}</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-10 text-sm sm:gap-16">
+          <div className="grid grid-cols-2 gap-10 text-body sm:gap-16">
             <div className="flex flex-col gap-2.5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted-foreground">Product</p>
+              <p className="font-mono text-label uppercase text-muted-foreground">Product</p>
               {NAV_LINKS.map((link) => (
                 <a key={link.href} href={link.href} className="text-foreground/70 transition-colors hover:text-foreground">
                   {link.label}
@@ -27,7 +27,7 @@ export default function Footer() {
               ))}
             </div>
             <div className="flex flex-col gap-2.5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted-foreground">Account</p>
+              <p className="font-mono text-label uppercase text-muted-foreground">Account</p>
               <Link href={LOGIN_HREF} className="text-foreground/70 transition-colors hover:text-foreground">
                 {COPY.nav.login}
               </Link>

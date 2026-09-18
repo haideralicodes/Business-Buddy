@@ -1,6 +1,7 @@
 import type { ReactNode } from "react"
 import { BarChart3, Check, Sparkles } from "lucide-react"
 import { Card } from "@/packages/ui/card"
+import { Stage, type StageTone } from "./Stage"
 import { cn } from "@/lib/utils"
 import { COPILOT_IDEAS, COPY, HERO_APP, PUBLISH_CHANNELS, WEEKLY_REPORT } from "./constants"
 import { Prominent, SectionHeading } from "./SectionHeading"
@@ -13,20 +14,8 @@ import { Hatch, Rails } from "./Structure"
  * product inside. The stage and panel never move, scale or lift.
  */
 
-const TONES = ["bg-stage-cool", "bg-stage-brand", "bg-stage-warm"] as const
-
-function Stage({ tone, className, children }: { tone: (typeof TONES)[number]; className?: string; children: ReactNode }) {
-  return (
-    <Card
-      variant="stage"
-      size="none"
-      aria-hidden
-      className={cn("flex aspect-[3/4] w-full min-w-0 items-center justify-center p-5 sm:p-6", tone, className)}
-    >
-      {children}
-    </Card>
-  )
-}
+const TONES: StageTone[] = ["cool", "brand", "warm"]
+const STAGE = "flex aspect-[3/4] w-full min-w-0 items-center justify-center p-5 sm:p-6"
 
 function Panel({ className, children }: { className?: string; children: ReactNode }) {
   return (
@@ -208,7 +197,7 @@ export default function Benefit() {
             <>
               {COPY.benefit.line1}
               <br />
-              {COPY.benefit.line2a} <Prominent className="text-primary">{COPY.benefit.line2b}</Prominent>
+              {COPY.benefit.line2a} <Prominent>{COPY.benefit.line2b}</Prominent>
             </>
           }
         />
@@ -221,11 +210,11 @@ export default function Benefit() {
             const last = i === FRAGMENTS.length - 1
             return (
               <div key={card.title} className={cn("group flex min-w-0 flex-col", last && "sm:col-span-2 lg:col-span-1")}>
-                <Stage tone={TONES[i]} className={last ? "sm:aspect-[16/9] lg:aspect-[3/4]" : undefined}>
+                <Stage tone={TONES[i]} aria-hidden className={cn(STAGE, last && "sm:aspect-[16/9] lg:aspect-[3/4]")}>
                   <Fragment />
                 </Stage>
-                <h3 className="mt-6 text-lg font-medium tracking-[-0.01em]">{card.title}</h3>
-                <p className="mt-2 text-[15px] leading-[1.6] text-muted-foreground">{card.body}</p>
+                <h3 className="mt-6 text-title font-semibold">{card.title}</h3>
+                <p className="mt-2 text-body text-muted-foreground">{card.body}</p>
               </div>
             )
           })}

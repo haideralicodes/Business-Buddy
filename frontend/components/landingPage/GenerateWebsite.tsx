@@ -15,7 +15,7 @@ export default function GenerateWebsite() {
               <>
                 {COPY.genWeb.line1}
                 <br />
-                {COPY.genWeb.line2a} <Prominent className="text-primary">{COPY.genWeb.line2b}</Prominent>
+                {COPY.genWeb.line2a} <Prominent>{COPY.genWeb.line2b}</Prominent>
               </>
             }
             sub={COPY.genWeb.sub}

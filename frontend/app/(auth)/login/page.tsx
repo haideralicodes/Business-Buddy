@@ -8,7 +8,7 @@ export default function Login() {
     <AuthShell
       title={
         <>
-          Welcome <Prominent className="text-primary">back!</Prominent>
+          Welcome <Prominent>back!</Prominent>
         </>
       }
       sub="Your site is live and your posts are queued. Sign in to see what Buddy did while you were away."
