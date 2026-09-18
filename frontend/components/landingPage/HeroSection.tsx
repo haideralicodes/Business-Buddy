@@ -25,7 +25,7 @@ export default function HeroSection() {
           >
             {COPY.hero.line1}
             <br className="hidden sm:block" />{" "}
-            {COPY.hero.line2a} <Prominent>{COPY.hero.line2b}</Prominent>
+            {COPY.hero.line2a} <Prominent className="text-[0.9em]">{COPY.hero.line2b}</Prominent>
           </h1>
 
           <p

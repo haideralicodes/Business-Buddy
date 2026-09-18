@@ -190,7 +190,7 @@ export const COPY = {
     eyebrow: "Social media",
     line1: "Give your feed",
     line2a: "a",
-    line2b: "week off",
+    line2b: "week-off",
     cards: [
       {
         title: "Ideas written for you",
